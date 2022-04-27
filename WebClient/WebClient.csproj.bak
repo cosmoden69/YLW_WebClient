@@ -1,0 +1,1500 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{79245AA7-2974-4E8F-82DE-E8D0F7C63720}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>YLW_WebClient</RootNamespace>
+    <AssemblyName>WebClient</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>C794BC9A853DFAB50CE9BEEAC0D7B2D605C1F8F6</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>WebClient_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>MetroHasp.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevComponents.DotNetBar2, Version=9.4.0.3, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\YLW_Service\YLWService\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Data.v18.2, Version=18.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Printing.v18.2.Core, Version=18.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v18.2.Core, Version=18.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v18.2, Version=18.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v18.2, Version=18.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v18.2, Version=18.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPdfViewer.v18.2, Version=18.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v18.2, Version=18.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v18.2, Version=18.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v18.2.Extensions, Version=18.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v18.2, Version=18.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v18.2.Extensions, Version=18.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\YLW_Service\YLWService\bin\Debug\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="ExtendedRichTextBox">
+      <HintPath>..\..\YLW_Service\YLWService\ExtendedRichTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <HintPath>.\Microsoft.Office.Interop.Word.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\YLW_Service\YLWService\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="office, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="YLWService, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\YLW_Service\YLWService\bin\Debug\YLWService.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomIntegerInput.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DBLossAccident.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DBLossAccident.Designer.cs">
+      <DependentUpon>DBLossAccident.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBLifeAccident.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DBLifeAccident.Designer.cs">
+      <DependentUpon>DBLifeAccident.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBLossAccidentA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DBLossAccidentA.Designer.cs">
+      <DependentUpon>DBLossAccidentA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBLifeContract.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DBLifeContract.Designer.cs">
+      <DependentUpon>DBLifeContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBLifeContractA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DBLifeContractA.Designer.cs">
+      <DependentUpon>DBLifeContractA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmWait2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmWait2.Designer.cs">
+      <DependentUpon>frmWait2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MGLossSmplContractB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MGLossSmplContractB.Designer.cs">
+      <DependentUpon>MGLossSmplContractB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MGLossSmplContractBH.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MGLossSmplContractBH.Designer.cs">
+      <DependentUpon>MGLossSmplContractBH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MGLossSmplContractBT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MGLossSmplContractBT.Designer.cs">
+      <DependentUpon>MGLossSmplContractBT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MGLossSmplContractA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MGLossSmplContractA.Designer.cs">
+      <DependentUpon>MGLossSmplContractA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MGLossSmplContract.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MGLossSmplContract.Designer.cs">
+      <DependentUpon>MGLossSmplContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MGLossSmplAccident.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MGLossSmplAccident.Designer.cs">
+      <DependentUpon>MGLossSmplAccident.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MGLossSmplAccidentA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MGLossSmplAccidentA.Designer.cs">
+      <DependentUpon>MGLossSmplAccidentA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MGLossAccident.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MGLossAccident.Designer.cs">
+      <DependentUpon>MGLossAccident.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HeungkukAccident.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HeungkukAccident.Designer.cs">
+      <DependentUpon>HeungkukAccident.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBLifeAccidentA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DBLifeAccidentA.Designer.cs">
+      <DependentUpon>DBLifeAccidentA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MGLossAccidentA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MGLossAccidentA.Designer.cs">
+      <DependentUpon>MGLossAccidentA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HyundaiAccident.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HyundaiAccident.Designer.cs">
+      <DependentUpon>HyundaiAccident.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HeungkukAccidentA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HeungkukAccidentA.Designer.cs">
+      <DependentUpon>HeungkukAccidentA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MeritzAccident.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MeritzAccident.Designer.cs">
+      <DependentUpon>MeritzAccident.cs</DependentUpon>
+    </Compile>
+    <Compile Include="accident.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="accident.Designer.cs">
+      <DependentUpon>accident.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HyundaiAccidentA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HyundaiAccidentA.Designer.cs">
+      <DependentUpon>HyundaiAccidentA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MeritzAccidentA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MeritzAccidentA.Designer.cs">
+      <DependentUpon>MeritzAccidentA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomDoubleInput.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomMaskedTextBoxAdv.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DBLifeDetail2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DBLifeDetail2.Designer.cs">
+      <DependentUpon>DBLifeDetail2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBLifeDetail2A.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DBLifeDetail2A.Designer.cs">
+      <DependentUpon>DBLifeDetail2A.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBLossPan6.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DBLossPan6.Designer.cs">
+      <DependentUpon>DBLossPan6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBLossPanB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DBLossPanB.Designer.cs">
+      <DependentUpon>DBLossPanB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDBLifeInputer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDBLifeInputer.Designer.cs">
+      <DependentUpon>frmDBLifeInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDBLossInputer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDBLossInputer.Designer.cs">
+      <DependentUpon>frmDBLossInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMGLossSmplInputer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMGLossSmplInputer.Designer.cs">
+      <DependentUpon>frmMGLossSmplInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMGLossInputer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMGLossInputer.Designer.cs">
+      <DependentUpon>frmMGLossInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RemoteFile.cs" />
+    <Compile Include="ucMGLossSmplInputer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMGLossSmplInputer.Designer.cs">
+      <DependentUpon>ucMGLossSmplInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMGLossPan8.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMGLossPan8.Designer.cs">
+      <DependentUpon>ucMGLossPan8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMGLossPan7.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMGLossPan7.Designer.cs">
+      <DependentUpon>ucMGLossPan7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MGLossContract.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MGLossContract.Designer.cs">
+      <DependentUpon>MGLossContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MGLossContractA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MGLossContractA.Designer.cs">
+      <DependentUpon>MGLossContractA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HeungkukContractA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HeungkukContractA.Designer.cs">
+      <DependentUpon>HeungkukContractA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HeungkukContract.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HeungkukContract.Designer.cs">
+      <DependentUpon>HeungkukContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBLossPan6A.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DBLossPan6A.Designer.cs">
+      <DependentUpon>DBLossPan6A.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MGLossContractBH.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MGLossContractBH.Designer.cs">
+      <DependentUpon>MGLossContractBH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MGLossContractBT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MGLossContractBT.Designer.cs">
+      <DependentUpon>MGLossContractBT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MGLossContractB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MGLossContractB.Designer.cs">
+      <DependentUpon>MGLossContractB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HeungkukContractB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HeungkukContractB.Designer.cs">
+      <DependentUpon>HeungkukContractB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHeungkukInputer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHeungkukInputer.Designer.cs">
+      <DependentUpon>frmHeungkukInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmHyundaiInputer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHyundaiInputer.Designer.cs">
+      <DependentUpon>frmHyundaiInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBLifeDetail1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DBLifeDetail1.Designer.cs">
+      <DependentUpon>DBLifeDetail1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBLifeDetail1A.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DBLifeDetail1A.Designer.cs">
+      <DependentUpon>DBLifeDetail1A.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HyundaiContractA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HyundaiContractA.Designer.cs">
+      <DependentUpon>HyundaiContractA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HyundaiContract.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HyundaiContract.Designer.cs">
+      <DependentUpon>HyundaiContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HyundaiPanB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HyundaiPanB.Designer.cs">
+      <DependentUpon>HyundaiPanB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HyundaiPanA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HyundaiPanA.Designer.cs">
+      <DependentUpon>HyundaiPanA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBLossContract.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DBLossContract.Designer.cs">
+      <DependentUpon>DBLossContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBLossContractA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DBLossContractA.Designer.cs">
+      <DependentUpon>DBLossContractA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBLossPanA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DBLossPanA.Designer.cs">
+      <DependentUpon>DBLossPanA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="meritzPanA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="meritzPanA.Designer.cs">
+      <DependentUpon>meritzPanA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="meritzContract.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="meritzContract.Designer.cs">
+      <DependentUpon>meritzContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contract.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contract.Designer.cs">
+      <DependentUpon>contract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="accidentA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="accidentA.Designer.cs">
+      <DependentUpon>accidentA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="meritzContractA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="meritzContractA.Designer.cs">
+      <DependentUpon>meritzContractA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="contractA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="contractA.Designer.cs">
+      <DependentUpon>contractA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomDataGridViewDateTimeInputCell.cs" />
+    <Compile Include="CustomDataGridViewComboBoxCell.cs" />
+    <Compile Include="CustomDataGridViewMaskedTextBoxCell.cs" />
+    <Compile Include="CustomDataGridViewDoubleInputCell.cs" />
+    <Compile Include="CustomDataGridViewRichTextBoxCell.cs" />
+    <Compile Include="CustomDataGridViewTextBoxCell.cs" />
+    <Compile Include="CustomDateTimeInput.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmAcptUploadSSL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAcptUploadSSL.Designer.cs">
+      <DependentUpon>frmAcptUploadSSL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAttachFileView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAttachFileView.designer.cs">
+      <DependentUpon>frmAttachFileView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAcdtPictGoods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAcdtPictGoods.designer.cs">
+      <DependentUpon>frmAcdtPictGoods.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFindDept.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFindEmp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHRFileDown.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHRFileDown.designer.cs">
+      <DependentUpon>frmHRFileDown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMeritzInputer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMeritzInputer.Designer.cs">
+      <DependentUpon>frmMeritzInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmKDBInputer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKDBInputer.designer.cs">
+      <DependentUpon>frmKDBInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLinaInputer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLinaInputer.designer.cs">
+      <DependentUpon>frmLinaInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportViewSSL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportViewSSL.Designer.cs">
+      <DependentUpon>frmReportViewSSL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRptHistoryList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRptHistoryList.Designer.cs">
+      <DependentUpon>FrmRptHistoryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSendSSLImg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSendSSLImg.Designer.cs">
+      <DependentUpon>frmSendSSLImg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSendSSL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSendSSL.Designer.cs">
+      <DependentUpon>frmSendSSL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSSDFTPInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSSDFTPInfo.Designer.cs">
+      <DependentUpon>frmSSDFTPInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grid11.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Grid11.Designer.cs">
+      <DependentUpon>Grid11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grid72.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Grid72.Designer.cs">
+      <DependentUpon>Grid72.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grid62.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Grid62.Designer.cs">
+      <DependentUpon>Grid62.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grid22.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Grid22.Designer.cs">
+      <DependentUpon>Grid22.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grid42.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Grid42.Designer.cs">
+      <DependentUpon>Grid42.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Grid52.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Grid52.Designer.cs">
+      <DependentUpon>Grid52.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CharacterMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CharacterMap.Designer.cs">
+      <DependentUpon>CharacterMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDBLifeInputer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDBLifeInputer.Designer.cs">
+      <DependentUpon>ucDBLifeInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDBLifeInvoice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDBLifeInvoice.Designer.cs">
+      <DependentUpon>ucDBLifeInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDBLifePan4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDBLifePan4.Designer.cs">
+      <DependentUpon>ucDBLifePan4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDBLifePan3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDBLifePan3.Designer.cs">
+      <DependentUpon>ucDBLifePan3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDBLifePan2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDBLifePan2.Designer.cs">
+      <DependentUpon>ucDBLifePan2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDBLossPan3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDBLossPan3.Designer.cs">
+      <DependentUpon>ucDBLossPan3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMGLossPan6.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMGLossPan6.Designer.cs">
+      <DependentUpon>ucMGLossPan6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMGLossPan5.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMGLossPan5.Designer.cs">
+      <DependentUpon>ucMGLossPan5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMGLossPan4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMGLossPan4.Designer.cs">
+      <DependentUpon>ucMGLossPan4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMGLossPan3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMGLossPan3.Designer.cs">
+      <DependentUpon>ucMGLossPan3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMGLossPan2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMGLossPan2.Designer.cs">
+      <DependentUpon>ucMGLossPan2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMGLossPan1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMGLossPan1.Designer.cs">
+      <DependentUpon>ucMGLossPan1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMGLossInputer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMGLossInputer.Designer.cs">
+      <DependentUpon>ucMGLossInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucHeungkukInputer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucHeungkukInputer.Designer.cs">
+      <DependentUpon>ucHeungkukInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDBLifePan1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDBLifePan1.Designer.cs">
+      <DependentUpon>ucDBLifePan1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucHeungkukPan3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucHeungkukPan3.Designer.cs">
+      <DependentUpon>ucHeungkukPan3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucHyundaiInputer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucHyundaiInputer.Designer.cs">
+      <DependentUpon>ucHyundaiInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucHeungkukPan1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucHeungkukPan1.Designer.cs">
+      <DependentUpon>ucHeungkukPan1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucHeungkukPan2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucHeungkukPan2.Designer.cs">
+      <DependentUpon>ucHeungkukPan2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucHyundaiPan5.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucHyundaiPan5.Designer.cs">
+      <DependentUpon>ucHyundaiPan5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucHyundaiPan4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucHyundaiPan4.Designer.cs">
+      <DependentUpon>ucHyundaiPan4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucHyundaiPan3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucHyundaiPan3.Designer.cs">
+      <DependentUpon>ucHyundaiPan3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucHyundaiPan1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucHyundaiPan1.Designer.cs">
+      <DependentUpon>ucHyundaiPan1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucHyundaiPan2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucHyundaiPan2.Designer.cs">
+      <DependentUpon>ucHyundaiPan2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDBLossInputer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDBLossInputer.Designer.cs">
+      <DependentUpon>ucDBLossInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDBLossPan1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDBLossPan1.Designer.cs">
+      <DependentUpon>ucDBLossPan1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDBLossPan2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDBLossPan2.Designer.cs">
+      <DependentUpon>ucDBLossPan2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDBLossPan4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDBLossPan4.Designer.cs">
+      <DependentUpon>ucDBLossPan4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMeritzPan5.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMeritzPan5.Designer.cs">
+      <DependentUpon>ucMeritzPan5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMeritzPan4.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMeritzPan4.Designer.cs">
+      <DependentUpon>ucMeritzPan4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMeritzPan3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMeritzPan3.Designer.cs">
+      <DependentUpon>ucMeritzPan3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMeritzPan2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMeritzPan2.Designer.cs">
+      <DependentUpon>ucMeritzPan2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucMeritzPan1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMeritzPan1.Designer.cs">
+      <DependentUpon>ucMeritzPan1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RichTextBoxPrinter.cs" />
+    <Compile Include="ucMeritzInputer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucMeritzInputer.Designer.cs">
+      <DependentUpon>ucMeritzInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucInputer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucInputer.Designer.cs">
+      <DependentUpon>ucInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSampleView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSampleView.Designer.cs">
+      <DependentUpon>frmSampleView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportView2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportView2.Designer.cs">
+      <DependentUpon>frmReportView2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportView.Designer.cs">
+      <DependentUpon>frmReportView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRprtSmplList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRprtSmplList.Designer.cs">
+      <DependentUpon>frmRprtSmplList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRprtSmplSave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRprtSmplSave.Designer.cs">
+      <DependentUpon>frmRprtSmplSave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="hospital.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="hospital.Designer.cs">
+      <DependentUpon>hospital.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IService.cs" />
+    <Compile Include="IViewerSheet.cs" />
+    <Compile Include="frmInputer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInputer.Designer.cs">
+      <DependentUpon>frmInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RichTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RichTextBox.Designer.cs">
+      <DependentUpon>RichTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RtfTable.cs" />
+    <Compile Include="Service.cs" />
+    <Compile Include="ucDocxControl2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDocxControl2.Designer.cs">
+      <DependentUpon>ucDocxControl2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucDocxControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucDocxControl.Designer.cs">
+      <DependentUpon>ucDocxControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucFlowLayoutPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ucKDBInputer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucKDBInputer.Designer.cs">
+      <DependentUpon>ucKDBInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucLinaInputer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucLinaInputer.Designer.cs">
+      <DependentUpon>ucLinaInputer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucSheet.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSheet.Designer.cs">
+      <DependentUpon>ucSheet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="uFunction.cs" />
+    <Compile Include="UpdateListDataSet.cs" />
+    <Compile Include="UpdateListDataSet.Designer.cs" />
+    <Compile Include="UpdateListDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UpdateListDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="WinWordControl.cs" />
+    <Compile Include="XtraReport1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="XtraReport1.designer.cs">
+      <DependentUpon>XtraReport1.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="MetroHasp.pfx" />
+    <None Include="UpdateListDataSet.xsc">
+      <DependentUpon>UpdateListDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="UpdateListDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>UpdateListDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UpdateListDataSet.xss">
+      <DependentUpon>UpdateListDataSet.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DBLossAccident.resx">
+      <DependentUpon>DBLossAccident.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBLifeAccident.resx">
+      <DependentUpon>DBLifeAccident.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBLossAccidentA.resx">
+      <DependentUpon>DBLossAccidentA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBLifeContract.resx">
+      <DependentUpon>DBLifeContract.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBLifeContractA.resx">
+      <DependentUpon>DBLifeContractA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmWait2.resx" />
+    <EmbeddedResource Include="MGLossSmplContractB.resx">
+      <DependentUpon>MGLossSmplContractB.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MGLossSmplContractBH.resx">
+      <DependentUpon>MGLossSmplContractBH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MGLossSmplContractBT.resx">
+      <DependentUpon>MGLossSmplContractBT.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MGLossSmplContractA.resx">
+      <DependentUpon>MGLossSmplContractA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MGLossSmplContract.resx">
+      <DependentUpon>MGLossSmplContract.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MGLossSmplAccident.resx">
+      <DependentUpon>MGLossSmplAccident.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MGLossSmplAccidentA.resx">
+      <DependentUpon>MGLossSmplAccidentA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MGLossAccident.resx">
+      <DependentUpon>MGLossAccident.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HeungkukAccident.resx">
+      <DependentUpon>HeungkukAccident.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBLifeAccidentA.resx">
+      <DependentUpon>DBLifeAccidentA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MGLossAccidentA.resx">
+      <DependentUpon>MGLossAccidentA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HyundaiAccident.resx">
+      <DependentUpon>HyundaiAccident.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HeungkukAccidentA.resx">
+      <DependentUpon>HeungkukAccidentA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MeritzAccident.resx">
+      <DependentUpon>MeritzAccident.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="accident.resx">
+      <DependentUpon>accident.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HyundaiAccidentA.resx">
+      <DependentUpon>HyundaiAccidentA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MeritzAccidentA.resx">
+      <DependentUpon>MeritzAccidentA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBLifeDetail2.resx">
+      <DependentUpon>DBLifeDetail2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBLifeDetail2A.resx">
+      <DependentUpon>DBLifeDetail2A.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBLossPan6.resx">
+      <DependentUpon>DBLossPan6.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBLossPanB.resx">
+      <DependentUpon>DBLossPanB.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDBLifeInputer.resx">
+      <DependentUpon>frmDBLifeInputer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDBLossInputer.resx">
+      <DependentUpon>frmDBLossInputer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMGLossSmplInputer.resx">
+      <DependentUpon>frmMGLossSmplInputer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMGLossInputer.resx">
+      <DependentUpon>frmMGLossInputer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMGLossSmplInputer.resx">
+      <DependentUpon>ucMGLossSmplInputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMGLossPan8.resx">
+      <DependentUpon>ucMGLossPan8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMGLossPan7.resx">
+      <DependentUpon>ucMGLossPan7.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MGLossContract.resx">
+      <DependentUpon>MGLossContract.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MGLossContractA.resx">
+      <DependentUpon>MGLossContractA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HeungkukContractA.resx">
+      <DependentUpon>HeungkukContractA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HeungkukContract.resx">
+      <DependentUpon>HeungkukContract.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBLossPan6A.resx">
+      <DependentUpon>DBLossPan6A.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MGLossContractBH.resx">
+      <DependentUpon>MGLossContractBH.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MGLossContractBT.resx">
+      <DependentUpon>MGLossContractBT.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MGLossContractB.resx">
+      <DependentUpon>MGLossContractB.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HeungkukContractB.resx">
+      <DependentUpon>HeungkukContractB.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHeungkukInputer.resx">
+      <DependentUpon>frmHeungkukInputer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHyundaiInputer.resx">
+      <DependentUpon>frmHyundaiInputer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBLifeDetail1.resx">
+      <DependentUpon>DBLifeDetail1.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBLifeDetail1A.resx">
+      <DependentUpon>DBLifeDetail1A.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HyundaiContractA.resx">
+      <DependentUpon>HyundaiContractA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HyundaiContract.resx">
+      <DependentUpon>HyundaiContract.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HyundaiPanB.resx">
+      <DependentUpon>HyundaiPanB.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HyundaiPanA.resx">
+      <DependentUpon>HyundaiPanA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBLossContract.resx">
+      <DependentUpon>DBLossContract.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBLossContractA.resx">
+      <DependentUpon>DBLossContractA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DBLossPanA.resx">
+      <DependentUpon>DBLossPanA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="meritzPanA.resx">
+      <DependentUpon>meritzPanA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="meritzContract.resx">
+      <DependentUpon>meritzContract.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contract.resx">
+      <DependentUpon>contract.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="accidentA.resx">
+      <DependentUpon>accidentA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="meritzContractA.resx">
+      <DependentUpon>meritzContractA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contractA.resx">
+      <DependentUpon>contractA.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAcptUploadSSL.resx">
+      <DependentUpon>frmAcptUploadSSL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAttachFileView.resx">
+      <DependentUpon>frmAttachFileView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAcdtPictGoods.resx">
+      <DependentUpon>frmAcdtPictGoods.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmHRFileDown.resx">
+      <DependentUpon>frmHRFileDown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMeritzInputer.resx">
+      <DependentUpon>frmMeritzInputer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKDBInputer.resx">
+      <DependentUpon>frmKDBInputer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLinaInputer.resx">
+      <DependentUpon>frmLinaInputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportViewSSL.resx">
+      <DependentUpon>frmReportViewSSL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRptHistoryList.resx">
+      <DependentUpon>FrmRptHistoryList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSendSSLImg.resx">
+      <DependentUpon>frmSendSSLImg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSendSSL.resx">
+      <DependentUpon>frmSendSSL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSSDFTPInfo.resx">
+      <DependentUpon>frmSSDFTPInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grid11.resx">
+      <DependentUpon>Grid11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grid72.resx">
+      <DependentUpon>Grid72.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grid62.resx">
+      <DependentUpon>Grid62.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grid22.resx">
+      <DependentUpon>Grid22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grid42.resx">
+      <DependentUpon>Grid42.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Grid52.resx">
+      <DependentUpon>Grid52.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CharacterMap.resx">
+      <DependentUpon>CharacterMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDBLifeInputer.resx">
+      <DependentUpon>ucDBLifeInputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDBLifeInvoice.resx">
+      <DependentUpon>ucDBLifeInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDBLifePan4.resx">
+      <DependentUpon>ucDBLifePan4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDBLifePan3.resx">
+      <DependentUpon>ucDBLifePan3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDBLifePan2.resx">
+      <DependentUpon>ucDBLifePan2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDBLossPan3.resx">
+      <DependentUpon>ucDBLossPan3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMGLossPan6.resx">
+      <DependentUpon>ucMGLossPan6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMGLossPan5.resx">
+      <DependentUpon>ucMGLossPan5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMGLossPan4.resx">
+      <DependentUpon>ucMGLossPan4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMGLossPan3.resx">
+      <DependentUpon>ucMGLossPan3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMGLossPan2.resx">
+      <DependentUpon>ucMGLossPan2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMGLossPan1.resx">
+      <DependentUpon>ucMGLossPan1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMGLossInputer.resx">
+      <DependentUpon>ucMGLossInputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucHeungkukInputer.resx">
+      <DependentUpon>ucHeungkukInputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDBLifePan1.resx">
+      <DependentUpon>ucDBLifePan1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucHeungkukPan3.resx">
+      <DependentUpon>ucHeungkukPan3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucHyundaiInputer.resx">
+      <DependentUpon>ucHyundaiInputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucHeungkukPan1.resx">
+      <DependentUpon>ucHeungkukPan1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucHeungkukPan2.resx">
+      <DependentUpon>ucHeungkukPan2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucHyundaiPan5.resx">
+      <DependentUpon>ucHyundaiPan5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucHyundaiPan4.resx">
+      <DependentUpon>ucHyundaiPan4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucHyundaiPan3.resx">
+      <DependentUpon>ucHyundaiPan3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucHyundaiPan1.resx">
+      <DependentUpon>ucHyundaiPan1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucHyundaiPan2.resx">
+      <DependentUpon>ucHyundaiPan2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDBLossInputer.resx">
+      <DependentUpon>ucDBLossInputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDBLossPan1.resx">
+      <DependentUpon>ucDBLossPan1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDBLossPan2.resx">
+      <DependentUpon>ucDBLossPan2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDBLossPan4.resx">
+      <DependentUpon>ucDBLossPan4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMeritzPan5.resx">
+      <DependentUpon>ucMeritzPan5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMeritzPan4.resx">
+      <DependentUpon>ucMeritzPan4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMeritzPan3.resx">
+      <DependentUpon>ucMeritzPan3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMeritzPan2.resx">
+      <DependentUpon>ucMeritzPan2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMeritzPan1.resx">
+      <DependentUpon>ucMeritzPan1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucMeritzInputer.resx">
+      <DependentUpon>ucMeritzInputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucInputer.resx">
+      <DependentUpon>ucInputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSampleView.resx">
+      <DependentUpon>frmSampleView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportView2.resx">
+      <DependentUpon>frmReportView2.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportView.resx">
+      <DependentUpon>frmReportView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRprtSmplList.resx">
+      <DependentUpon>frmRprtSmplList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRprtSmplSave.resx">
+      <DependentUpon>frmRprtSmplSave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="hospital.resx">
+      <DependentUpon>hospital.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInputer.resx">
+      <DependentUpon>frmInputer.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RichTextBox.resx">
+      <DependentUpon>RichTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDocxControl2.resx">
+      <DependentUpon>ucDocxControl2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucDocxControl.resx">
+      <DependentUpon>ucDocxControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucKDBInputer.resx">
+      <DependentUpon>ucKDBInputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucLinaInputer.resx">
+      <DependentUpon>ucLinaInputer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSheet.resx">
+      <DependentUpon>ucSheet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XtraReport1.resx">
+      <DependentUpon>XtraReport1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2%28x86 및 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\btnExit_Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Close_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Btn_S_01.Image.png" />
+    <None Include="Resources\Btn_S_02.Image.png" />
+    <None Include="Resources\Btn_S_03.Image.png" />
+    <None Include="Resources\Btn_S_04.Image.png" />
+    <None Include="Resources\Btn_S_05.Image.png" />
+    <None Include="Resources\Btn_S_06.Image.png" />
+    <None Include="Resources\Btn_S_07.Image.png" />
+    <None Include="Resources\Btn_S_08.Image.png" />
+    <Content Include="Resources\Send_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
