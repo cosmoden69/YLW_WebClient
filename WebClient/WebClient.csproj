@@ -76,7 +76,8 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>MetroHasp.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -1155,7 +1156,6 @@
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>BisSurvRptLina.Designer.cs</LastGenOutput>
     </None>
-    <None Include="MetroHasp.pfx" />
     <None Include="Painter\app.config" />
     <None Include="UpdateListDataSet.xsc">
       <DependentUpon>UpdateListDataSet.xsd</DependentUpon>
