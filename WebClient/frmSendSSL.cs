@@ -308,7 +308,7 @@ namespace YLW_WebClient.CAA
                 dr["edi_id"] = edi_id;
                 dr["trDt"] = trDt;
 
-                DataSet yds = MTRServiceModule.CallMTRServiceCall(security, ds);
+                DataSet yds = MTRServiceModule.CallMTRServiceCallPost(security, ds);
                 if (yds != null && yds.Tables.Count > 0)
                 {
                     if (yds.Tables.Contains("ErrorMessage")) throw new Exception(yds.Tables["ErrorMessage"].Rows[0]["Message"].ToString());
