@@ -124,6 +124,7 @@
     <Reference Include="office, Version=12.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
@@ -469,6 +470,12 @@
     <Compile Include="Painter\Undo\UndoStack.cs" />
     <Compile Include="RemoteFile.cs" />
     <Compile Include="ResizeRowManager.cs" />
+    <Compile Include="ucImageViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucImageViewer.Designer.cs">
+      <DependentUpon>ucImageViewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucMGLossSmplInputer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1320,6 +1327,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Painter\ToolBar.resx">
       <DependentUpon>ToolBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucImageViewer.resx">
+      <DependentUpon>ucImageViewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucMGLossSmplInputer.resx">
       <DependentUpon>ucMGLossSmplInputer.cs</DependentUpon>

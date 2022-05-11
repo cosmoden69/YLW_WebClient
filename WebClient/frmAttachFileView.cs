@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media.Imaging;
 
 using YLWService;
 
@@ -15,6 +17,8 @@ namespace YLW_WebClient.CAA
 {
     public partial class frmAttachFileView : Form
     {
+        private Control currentObject;
+
         private static AttachFileParam _param = null;
 
         private static frmAttachFileView current = null;
@@ -33,7 +37,6 @@ namespace YLW_WebClient.CAA
             this.btnDownload.Click += BtnDownload_Click;
             this.dgvList.CellClick += DgvList_CellClick;
             this.dgvList.CellDoubleClick += DgList_CellDoubleClick;
-            this.dgvImg.CellDoubleClick += DgList_CellDoubleClick;
 
             _bEvent = true;
         }
@@ -148,29 +151,14 @@ namespace YLW_WebClient.CAA
             {
                 Cursor.Current = Cursors.WaitCursor;
 
-                Image img = null;
-                string nm = "";
-
-                var listModels = new List<ViewImage>();
-                for (int ii = 0; ii < dgvImg.Rows.Count; ii++)
+                if (currentObject == pdf)
                 {
-                    img = (Image)dgvImg.Rows[ii].Cells["FileImage1"].Value;
-                    nm = (string)dgvImg.Rows[ii].Cells["FileName1"].Value;
-                    if (img != null)
-                    {
-                        listModels.Add(new ViewImage() { FileImage1 = img, FileName1 = nm });
-                    }
-                    img = (Image)dgvImg.Rows[ii].Cells["FileImage2"].Value;
-                    nm = (string)dgvImg.Rows[ii].Cells["FileName2"].Value;
-                    if (img != null)
-                    {
-                        listModels.Add(new ViewImage() { FileImage1 = img, FileName1 = nm });
-                    }
+                    pdf.Print();
                 }
-                XtraReport1 rpt1 = new XtraReport1(listModels);
-                DevExpress.XtraReports.UI.ReportPrintTool rpt = new DevExpress.XtraReports.UI.ReportPrintTool(rpt1);
-                rpt.AutoShowParametersPanel = false;
-                rpt.ShowPreviewDialog();
+                else if (currentObject == pic)
+                {
+                    pic.Print();
+                }
             }
             catch (Exception ex)
             {
@@ -194,11 +182,11 @@ namespace YLW_WebClient.CAA
             {
                 Cursor.Current = Cursors.WaitCursor;
 
-                picPreview.Image = null;
+                currentObject = null;
+                pic.Visible = false;
+                pdf.Visible = false;
                 dgvList.Rows.Clear();
                 dgvList.Refresh();
-                dgvImg.Rows.Clear();
-                dgvImg.Refresh();
 
                 string fileSeq = txtFileSeq.Text;
 
@@ -241,28 +229,6 @@ namespace YLW_WebClient.CAA
                     }
                     dgvList.Refresh();
                     DgvList_CellClick(dgvList, new DataGridViewCellEventArgs(0, 0));
-
-                    //미리보기
-                    int colIdx = 0;
-                    int rowidx = 0;
-                    dgvImg.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-                    for (int i = 0; i < ydt.Rows.Count; i++)
-                    {
-                        DataRow dr = ydt.Rows[i];
-                        colIdx = i % 2 + 1;
-                        if (colIdx == 1) rowidx = dgvImg.Rows.Add();
-                        DataGridViewRow drow = dgvImg.Rows[rowidx];
-                        string strImage = dr["FileBase64"].ToString();
-                        Image img = YLWService.Utils.stringToImage(strImage);
-                        drow.Cells["fileImage" + colIdx].Value = img;      // 사진
-                        drow.Cells["AttachFileSeq" + colIdx].Value = dr["AttachFileSeq"];
-                        drow.Cells["AttachFileNo" + colIdx].Value = dr["AttachFileNo"];
-                        drow.Cells["FileName" + colIdx].Value = dr["FileName"];
-                        drow.Cells["FilePathName" + colIdx].Value = dr["RealFileName"];
-                        drow.Cells["FileExt" + colIdx].Value = dr["FileExt"];
-                        drow.Cells["FileBase64" + colIdx].Value = dr["FileBase64"];
-                    }
-                    dgvImg.Refresh();
                 }
             }
             catch (Exception ex)
@@ -285,16 +251,34 @@ namespace YLW_WebClient.CAA
                 if (e.RowIndex < 0 || e.RowIndex >= dgv.RowCount) return;
                 if (e.ColumnIndex < 0 || e.ColumnIndex >= dgv.ColumnCount) return;
 
-                Image img = null;
-                if (dgv == dgvList)
+                string file = GetFile(dgv.Rows[e.RowIndex]);
+                if (Path.GetExtension(file).ToUpper() == ".PDF")
                 {
-                    img = YLWService.Utils.stringToImage(dgv.Rows[e.RowIndex].Cells["FileBase64"].Value + "");
+                    pic.Visible = false;
+                    pdf.Visible = true;
+                    pdf.Dock = DockStyle.Fill;
+                    pdf.LoadDocument(file);
+                    currentObject = pdf;
+                }
+                else if (Path.GetExtension(file).ToUpper() == ".TIF" || Path.GetExtension(file).ToUpper() == ".TIFF")
+                {
+                    List<Image> images = GetAllPages(file);
+                    pic.Visible = true;
+                    pic.Dock = DockStyle.Fill;
+                    pdf.Visible = false;
+                    pic.SetImage(images);
+                    currentObject = pic;
                 }
                 else
                 {
-                    img = (Image)dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                    List<Image> images = new List<Image>();
+                    images.Add(Image.FromFile(file));
+                    pic.Visible = true;
+                    pic.Dock = DockStyle.Fill;
+                    pdf.Visible = false;
+                    pic.SetImage(images);
+                    currentObject = pic;
                 }
-                picPreview.Image = img;
             }
             catch (Exception ex)
             {
@@ -311,16 +295,8 @@ namespace YLW_WebClient.CAA
                 if (e.RowIndex < 0 || e.RowIndex >= dgv.RowCount) return;
                 if (e.ColumnIndex < 0 || e.ColumnIndex >= dgv.ColumnCount) return;
 
-                Image img = null;
-                if (dgv == dgvList)
-                {
-                    img = YLWService.Utils.stringToImage(dgv.Rows[e.RowIndex].Cells["FileBase64"].Value + "");
-                }
-                else
-                {
-                    img = (Image)dgv.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                }
-                ImageView(img);
+                string file = GetFile(dgv.Rows[e.RowIndex]);
+                if (file != "") System.Diagnostics.Process.Start(file);
             }
             catch (Exception ex)
             {
@@ -328,10 +304,11 @@ namespace YLW_WebClient.CAA
             }
         }
 
-        private void ImageView(Image img)
+        private void ImageView(DataGridViewRow drow)
         {
             try
             {
+                Image img = YLWService.Utils.stringToImage(drow.Cells["FileBase64"].Value + "");
                 if (img == null) return;
                 string file = Path.Combine(Path.GetTempPath(), Path.ChangeExtension(Path.GetTempFileName(), ".jpg"));
                 if (File.Exists(file)) File.Delete(file);
@@ -345,6 +322,46 @@ namespace YLW_WebClient.CAA
                 MessageBox.Show(ex.Message);
                 return;
             }
+        }
+
+        private string GetFile(DataGridViewRow drow)
+        {
+            try
+            {
+                string ext = Utils.ConvertToString(drow.Cells["FileExt"].Value);
+                string fileBase64 = Utils.ConvertToString(drow.Cells["FileBase64"].Value);
+                if (fileBase64 == null || fileBase64 == "") return "";
+                byte[] bytes_file = Convert.FromBase64String(fileBase64);
+                string file = Path.Combine(Path.GetTempPath(), Path.ChangeExtension(Path.GetTempFileName(), "." + ext));
+                if (File.Exists(file)) File.Delete(file);
+                FileStream fs = new FileStream(file, FileMode.Create);
+                fs.Write(bytes_file, 0, bytes_file.Length);
+                fs.Close();
+                return file;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return "";
+            }
+        }
+
+        private List<Image> GetAllPages(string file)
+        {
+            List<Image> images = new List<Image>();
+            Bitmap bitmap = (Bitmap)Image.FromFile(file);
+            int count = bitmap.GetFrameCount(FrameDimension.Page);
+            for (int idx = 0; idx < count; idx++)
+            {
+                // save each frame to a bytestream
+                bitmap.SelectActiveFrame(FrameDimension.Page, idx);
+                MemoryStream byteStream = new MemoryStream();
+                bitmap.Save(byteStream, ImageFormat.Tiff);
+
+                // and then create a new Image from it
+                images.Add(Image.FromStream(byteStream));
+            }
+            return images;
         }
     }
 
