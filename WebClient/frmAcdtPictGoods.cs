@@ -35,6 +35,8 @@ namespace YLW_WebClient
 
         private ImageEditView editView = null;
 
+        DataTable CD_Goods;
+
         bool _bEvent = false;
 
         public frmAcdtPictGoods()
@@ -173,7 +175,7 @@ namespace YLW_WebClient
                 //strSql += " FOR JSON PATH ";
 
                 strSql = "";
-                strSql += " SELECT DISTINCT t.ObjName FROM ( ";
+                strSql += " SELECT DISTINCT t.ObjSeq, t.ObjName FROM ( ";
                 //목적물
                 strSql += " SELECT CONVERT(VARCHAR,gds.ObjSeq) AS ObjSeq, gds.InsurObjDvs AS ObjName, gds.RprtSeq AS sortOrder ";
                 strSql += " FROM   _TAdjSLInsTargetGoods AS gds WITH(NOLOCK) ";
@@ -193,14 +195,14 @@ namespace YLW_WebClient
                 strSql += " AND    gds.AcptMgmtSeq = '" + Utils.ConvertToString(_param.AcptMgmtSeq) + "' ";
                 strSql += " UNION ALL ";
                 //저장데이타
-                strSql += " SELECT CONVERT(VARCHAR,gds.AcdtPictSeq) AS ObjSeq, gds.ObjNm AS ObjName, gds.AcdtPictSerl AS sortOrder ";
+                strSql += " SELECT CONVERT(VARCHAR,gds.ObjSeq) AS ObjSeq, gds.ObjNm AS ObjName, gds.AcdtPictSerl AS sortOrder ";
                 strSql += " FROM   _TAdjSLAcdtImgList AS gds WITH(NOLOCK) ";
                 strSql += " WHERE  gds.CompanySeq = '" + Utils.ConvertToString(_param.CompanySeq) + "' ";
                 strSql += " AND    gds.AcptMgmtSeq = '" + Utils.ConvertToString(_param.AcptMgmtSeq) + "' ";
                 //
                 strSql += " ) AS t ";
                 strSql += " FOR JSON PATH ";
-                DataTable CD_Goods = YLWService.MTRServiceModule.GetMTRServiceDataTable(_param.CompanySeq, strSql);
+                CD_Goods = YLWService.MTRServiceModule.GetMTRServiceDataTable(_param.CompanySeq, strSql);
                 if (CD_Goods != null)
                 {
                     CD_Goods.TableName = "CD_Goods";
@@ -565,6 +567,7 @@ namespace YLW_WebClient
                     dr["AcdtPictRmk"] = dgv_dbox.Rows[i].Cells["AcdtPictRmk"].Value;
                     dr["AcdtPictSerl"] = dgv_dbox.Rows[i].Cells["AcdtPictSerl"].Value;
                     dr["AcdtPictImage"] = dgv_dbox.Rows[i].Cells["AcdtPictImage"].Value;
+                    dr["ObjSeq"] = GetObjSeq(Utils.ConvertToString(dr["ObjNm"]));
                     //dr["ObjSeq"] = dgv_dbox.Rows[i].Cells["ObjSeq1"].Value;
                     dr["WorkingTag"] = dgv_dbox.Rows[i].Cells["WorkingTag"].Value;
                     dr["IDX_NO"] = i + 1;
@@ -579,6 +582,21 @@ namespace YLW_WebClient
                 MessageBox.Show(ex.Message);
                 return null;
             }
+        }
+
+        private object GetObjSeq(string objnm)
+        {
+            if (CD_Goods != null && CD_Goods.Rows.Count > 0)
+            {
+                for (int i = 0; i < CD_Goods.Rows.Count; i++)
+                {
+                    if (Utils.ConvertToString(CD_Goods.Rows[i]["ObjName"]) == objnm)
+                    {
+                        return CD_Goods.Rows[i]["ObjSeq"];
+                    }
+                }
+            }
+            return "0";
         }
 
         private void dbox_file_add(string P_File)
