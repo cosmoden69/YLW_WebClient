@@ -120,7 +120,7 @@ namespace YLW_WebClient
                     CAA.frmHeungkukInputer.Current.LoadDocument(para);
                     frm = CAA.frmHeungkukInputer.Current;
                 }
-                else if (para.BizNo == "2028118158")  //DB생명
+                else if (para.BizNo == "2028118152" || para.BizNo == "2028118158")  //DB생명
                 {
                     if (para.ReportName == "RptAdjSLRptSurvRptPers") para.ReportName = "RptAdjSLRptSurvRptPersDBLife";
                     if (para.ReportName == "RptAdjSLRptSurvRptPersMid") para.ReportName = "RptAdjSLRptSurvRptPersDBLifeMid";
@@ -128,7 +128,7 @@ namespace YLW_WebClient
                     CAA.frmDBLifeInputer.Current.LoadDocument(para);
                     frm = CAA.frmDBLifeInputer.Current;
                 }
-                else if (para.BizNo == "2018145593")  //DB손해
+                else if (para.BizNo == "1048185673" || para.BizNo == "2018145593")  //DB손해
                 {
                     if (para.ReportName == "RptAdjSLRptSurvRptPers") para.ReportName = "RptAdjSLRptSurvRptPersDBLoss";
                     if (para.ReportName == "RptAdjSLRptSurvRptPersMid") para.ReportName = "RptAdjSLRptSurvRptPersDBLossMid";
