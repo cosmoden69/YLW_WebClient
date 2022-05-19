@@ -108,12 +108,23 @@ namespace YLW_WebClient.CAA
 
         private void CbaccipInsJobCd_DropDownChange(object sender, bool Expanded)
         {
-            if (Expanded)
+            try
+            { 
+                if (Expanded)
+                {
+                    string value = Utils.GetComboSelectedValue(cbaccipInsJobCd, "MinorSeq");
+                    DataTable dtTmp = USERCD_INSJOBCD.Copy();
+                    DataRow[] drows = dtTmp.Select("MinorName LIKE '%" + txtJobCodeFilter.Text + "%'");
+                    DataTable dtTmp2 = null;
+                    if (drows != null && drows.Length > 0) dtTmp2 = drows?.CopyToDataTable();
+                    else dtTmp2 = dtTmp.Clone();
+                    Utils.SetCombo(cbaccipInsJobCd, dtTmp2, "MinorSeq", "MinorName", true);
+                    Utils.SetComboSelectedValue(cbaccipInsJobCd, value, "MinorSeq");
+                }
+            }
+            catch (Exception ex)
             {
-                string value = Utils.GetComboSelectedValue(cbaccipInsJobCd, "MinorSeq");
-                DataTable dtTmp = USERCD_INSJOBCD.Copy();
-                Utils.SetCombo(cbaccipInsJobCd, dtTmp.Select("MinorName LIKE '%" + txtJobCodeFilter.Text + "%'")?.CopyToDataTable(), "MinorSeq", "MinorName", true);
-                Utils.SetComboSelectedValue(cbaccipInsJobCd, value, "MinorSeq");
+                MessageBox.Show(ex.Message);
             }
         }
 
