@@ -37,9 +37,6 @@ namespace YLW_WebClient.CAA
         {
             InitializeComponent();
 
-            btn_SmplQry.Visible = false;
-            btn_SmplSave.Visible = false;
-
             this.Disposed += frmDBLifeInputer_Disposed;
         }
 
@@ -126,6 +123,11 @@ namespace YLW_WebClient.CAA
                 ucInputer1.Ins1Save();
                 ucInputer1.SortAccident1();
                 ucInputer1.XmlData_Save(true);
+
+                if (this.ucInputer1.param.ReportType == "300109002")  //종결보고서인 경우 종결보고서번호 생성
+                {
+                    uFunction.CreateLasRprtNo(this.ucInputer1.param.CompanySeq, this.ucInputer1.param.AcptMgmtSeq, this.ucInputer1.param.ReSurvAsgnNo);
+                }
 
                 ReportParam p = new ReportParam();
                 p.AcptMgmtSeq = this.ucInputer1.param.AcptMgmtSeq;

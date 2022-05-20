@@ -70,14 +70,14 @@
             this.btn_SmplQry.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btn_SmplQry.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btn_SmplQry.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btn_SmplQry.Location = new System.Drawing.Point(230, 10);
+            this.btn_SmplQry.Location = new System.Drawing.Point(230, 3);
             this.btn_SmplQry.Name = "btn_SmplQry";
             this.btn_SmplQry.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor();
-            this.btn_SmplQry.Size = new System.Drawing.Size(100, 26);
+            this.btn_SmplQry.Size = new System.Drawing.Size(70, 34);
             this.btn_SmplQry.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btn_SmplQry.TabIndex = 10161;
             this.btn_SmplQry.TabStop = false;
-            this.btn_SmplQry.Text = "보고서 사례조회";
+            this.btn_SmplQry.Text = "보고서\n사례조회";
             this.btn_SmplQry.Click += new System.EventHandler(this.btn_SmplQry_Click);
             // 
             // btn_SmplSave
@@ -85,14 +85,14 @@
             this.btn_SmplSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btn_SmplSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btn_SmplSave.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btn_SmplSave.Location = new System.Drawing.Point(120, 10);
+            this.btn_SmplSave.Location = new System.Drawing.Point(150, 3);
             this.btn_SmplSave.Name = "btn_SmplSave";
             this.btn_SmplSave.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor();
-            this.btn_SmplSave.Size = new System.Drawing.Size(100, 26);
+            this.btn_SmplSave.Size = new System.Drawing.Size(70, 34);
             this.btn_SmplSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btn_SmplSave.TabIndex = 10161;
             this.btn_SmplSave.TabStop = false;
-            this.btn_SmplSave.Text = "보고서 사례저장";
+            this.btn_SmplSave.Text = "보고서\n사례저장";
             this.btn_SmplSave.Click += new System.EventHandler(this.btn_SmplSave_Click);
             // 
             // btn_Find
@@ -100,10 +100,10 @@
             this.btn_Find.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btn_Find.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btn_Find.Image = ((System.Drawing.Image)(resources.GetObject("btn_Find.Image")));
-            this.btn_Find.Location = new System.Drawing.Point(10, 10);
+            this.btn_Find.Location = new System.Drawing.Point(10, 3);
             this.btn_Find.Name = "btn_Find";
             this.btn_Find.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor();
-            this.btn_Find.Size = new System.Drawing.Size(80, 26);
+            this.btn_Find.Size = new System.Drawing.Size(80, 34);
             this.btn_Find.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btn_Find.TabIndex = 10161;
             this.btn_Find.TabStop = false;
@@ -116,10 +116,10 @@
             this.btn_Exit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btn_Exit.Image = ((System.Drawing.Image)(resources.GetObject("btn_Exit.Image")));
             this.btn_Exit.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btn_Exit.Location = new System.Drawing.Point(650, 10);
+            this.btn_Exit.Location = new System.Drawing.Point(650, 3);
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor();
-            this.btn_Exit.Size = new System.Drawing.Size(80, 26);
+            this.btn_Exit.Size = new System.Drawing.Size(80, 34);
             this.btn_Exit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btn_Exit.TabIndex = 10161;
             this.btn_Exit.TabStop = false;
@@ -147,16 +147,16 @@
             // 
             this.btn_Save1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btn_Save1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btn_Save1.Image = ((System.Drawing.Image)(resources.GetObject("btn_Save1.Image")));
+            //this.btn_Save1.Image = ((System.Drawing.Image)(resources.GetObject("btn_Save1.Image")));
             this.btn_Save1.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btn_Save1.Location = new System.Drawing.Point(560, 10);
+            this.btn_Save1.Location = new System.Drawing.Point(399, 3);
             this.btn_Save1.Name = "btn_Save1";
             this.btn_Save1.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor();
-            this.btn_Save1.Size = new System.Drawing.Size(80, 26);
+            this.btn_Save1.Size = new System.Drawing.Size(70, 34);
             this.btn_Save1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btn_Save1.TabIndex = 25;
             this.btn_Save1.TabStop = false;
-            this.btn_Save1.Text = "임시저장";
+            this.btn_Save1.Text = "저 장";
             this.btn_Save1.Click += new System.EventHandler(this.Btn_Save_Click);
             // 
             // btn_HSave
@@ -165,14 +165,14 @@
             this.btn_HSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             //this.btn_HSave.Image = ((System.Drawing.Image)(resources.GetObject("btn_Save1.Image")));
             this.btn_HSave.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btn_HSave.Location = new System.Drawing.Point(480, 10);
+            this.btn_HSave.Location = new System.Drawing.Point(478, 3);
             this.btn_HSave.Name = "btn_HSave";
             this.btn_HSave.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor();
-            this.btn_HSave.Size = new System.Drawing.Size(70, 26);
+            this.btn_HSave.Size = new System.Drawing.Size(72, 34);
             this.btn_HSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btn_HSave.TabIndex = 24;
             this.btn_HSave.TabStop = false;
-            this.btn_HSave.Text = "보고서저장";
+            this.btn_HSave.Text = "보고서 생성\n및 업로드";
             this.btn_HSave.Click += new System.EventHandler(this.Btn_HSave_Click);
             // 
             // btn_HQuery
@@ -181,14 +181,14 @@
             this.btn_HQuery.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             //this.btn_HQuery.Image = ((System.Drawing.Image)(resources.GetObject("btn_Save1.Image")));
             this.btn_HQuery.ImagePosition = DevComponents.DotNetBar.eImagePosition.Right;
-            this.btn_HQuery.Location = new System.Drawing.Point(400, 10);
+            this.btn_HQuery.Location = new System.Drawing.Point(560, 3);
             this.btn_HQuery.Name = "btn_HQuery";
             this.btn_HQuery.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor();
-            this.btn_HQuery.Size = new System.Drawing.Size(70, 26);
+            this.btn_HQuery.Size = new System.Drawing.Size(70, 34);
             this.btn_HQuery.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btn_HQuery.TabIndex = 23;
             this.btn_HQuery.TabStop = false;
-            this.btn_HQuery.Text = "보고서이력";
+            this.btn_HQuery.Text = "보고서\n이력 조회";
             this.btn_HQuery.Click += new System.EventHandler(this.Btn_HQuery_Click);
             // 
             // panel2

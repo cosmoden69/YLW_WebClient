@@ -309,52 +309,52 @@ namespace YLW_WebClient.CAA
 
         private string GetPanelLine1()
         {
-            if (panelExA1.Text == "②") return "2";
-            else if (panelExB1.Text == "①") return "1";
-            else if (panelExC1.Text == "ⓞ") return "0";
-            else return "0";
+            if (panelExA1.Text == "②") return "3";
+            else if (panelExB1.Text == "①") return "2";
+            else if (panelExC1.Text == "ⓞ") return "1";
+            else return "1";
         }
 
         private string GetPanelLine2()
         {
-            if (panelExA2.Text == "②") return "2";
-            else if (panelExB2.Text == "①") return "1";
-            else if (panelExC2.Text == "ⓞ") return "0";
-            else return "0";
+            if (panelExA2.Text == "②") return "3";
+            else if (panelExB2.Text == "①") return "2";
+            else if (panelExC2.Text == "ⓞ") return "1";
+            else return "1";
         }
 
         private string GetPanelLine3()
         {
-            if (panelExA3.Text == "②") return "2";
-            else if (panelExB3.Text == "①") return "1";
-            else if (panelExC3.Text == "ⓞ") return "0";
-            else return "0";
+            if (panelExA3.Text == "②") return "3";
+            else if (panelExB3.Text == "①") return "2";
+            else if (panelExC3.Text == "ⓞ") return "1";
+            else return "1";
         }
 
         private string GetPanelLine4()
         {
-            if (panelExA4.Text == "②") return "2";
-            else if (panelExB4.Text == "①") return "1";
-            else if (panelExC4.Text == "ⓞ") return "0";
-            else return "0";
+            if (panelExA4.Text == "②") return "3";
+            else if (panelExB4.Text == "①") return "2";
+            else if (panelExC4.Text == "ⓞ") return "1";
+            else return "1";
         }
 
         private string GetPanelLine5()
         {
-            if (panelExA5.Text == "②") return "2";
-            else if (panelExB5.Text == "①") return "1";
-            else if (panelExC5.Text == "ⓞ") return "0";
-            else return "0";
+            if (panelExA5.Text == "②") return "3";
+            else if (panelExB5.Text == "①") return "2";
+            else if (panelExC5.Text == "ⓞ") return "1";
+            else return "1";
         }
 
         private void SetSumText()
         {
             int val = 0;
-            val += Utils.ToInt(GetPanelLine1());
-            val += Utils.ToInt(GetPanelLine2());
-            val += Utils.ToInt(GetPanelLine3());
-            val += Utils.ToInt(GetPanelLine4());
-            val += Utils.ToInt(GetPanelLine5());
+            val += Utils.ToInt(GetPanelLine1()) - 1;
+            val += Utils.ToInt(GetPanelLine2()) - 1;
+            val += Utils.ToInt(GetPanelLine3()) - 1;
+            val += Utils.ToInt(GetPanelLine4()) - 1;
+            val += Utils.ToInt(GetPanelLine5()) - 1;
             txtSum.Text = Utils.ConvertToString(val);
         }
     }

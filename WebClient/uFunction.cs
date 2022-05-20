@@ -32,5 +32,40 @@ namespace YLW_WebClient.CAA
                 return 0;
             }
         }
+
+        public static string CreateLasRprtNo(int companySeq, string aseq, string rno)
+        {
+            try
+            {
+                YLWService.YlwSecurityJson security = YLWService.MTRServiceModule.SecurityJson.Clone();  //깊은복사
+                security.serviceId = "Metro.Package.AdjSL.BisRprtGoodsPrint";
+                security.methodId = "CreateLastRprtNo";
+                security.companySeq = companySeq;
+
+                DataSet ds = new DataSet("ROOT");
+                DataTable dt = ds.Tables.Add("DataBlock1");
+
+                dt.Columns.Add("AcptMgmtSeq");
+                dt.Columns.Add("ReSurvAsgnNo");
+
+                dt.Clear();
+                DataRow dr = dt.Rows.Add();
+
+                dr["AcptMgmtSeq"] = aseq;
+                dr["ReSurvAsgnNo"] = rno;
+
+                DataSet yds = YLWService.MTRServiceModule.CallMTRServiceCallPost(security, ds);
+                if (yds != null && yds.Tables.Count > 0)
+                {
+                    return Utils.ConvertToString(yds.Tables[0].Rows[0]["LasRprtNo"]);
+                }
+                return "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return "";
+            }
+        }
     }
 }
