@@ -35,7 +35,6 @@
             this.btn_Exit = new DevComponents.DotNetBar.ButtonX();
             this.panelEx3 = new DevComponents.DotNetBar.PanelEx();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.ucInputer1 = new YLW_WebClient.CAA.ucInputer();
             this.Panel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,24 +114,12 @@
             this.panel2.Size = new System.Drawing.Size(5, 827);
             this.panel2.TabIndex = 963;
             // 
-            // ucInputer1
-            // 
-            this.ucInputer1.BackColor = System.Drawing.Color.White;
-            this.ucInputer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ucInputer1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ucInputer1.Location = new System.Drawing.Point(5, 47);
-            this.ucInputer1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ucInputer1.Name = "ucInputer1";
-            this.ucInputer1.Size = new System.Drawing.Size(753, 827);
-            this.ucInputer1.TabIndex = 964;
-            // 
             // frmSampleView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(758, 874);
-            this.Controls.Add(this.ucInputer1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Panel);
             this.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -156,7 +143,6 @@
         private DevComponents.DotNetBar.ButtonX btn_Exit;
         private System.Windows.Forms.TextBox txtRprtSmplNm;
         private System.Windows.Forms.Label label1;
-        private ucInputer ucInputer1;
     }
 }
 

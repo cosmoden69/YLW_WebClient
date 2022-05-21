@@ -231,6 +231,7 @@
     <Compile Include="frmWait.Designer.cs">
       <DependentUpon>frmWait.cs</DependentUpon>
     </Compile>
+    <Compile Include="ISmplInputer.cs" />
     <Compile Include="MessageInspector.cs" />
     <Compile Include="MGLossSmplContractB.cs">
       <SubType>UserControl</SubType>

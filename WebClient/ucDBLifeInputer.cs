@@ -15,7 +15,7 @@ using YLWService;
 
 namespace YLW_WebClient.CAA
 {
-    public partial class ucDBLifeInputer : UserControl
+    public partial class ucDBLifeInputer : UserControl, ISmplInputer
     {
         public ReportParam param = null;
         public  bool SmplAuth = false;

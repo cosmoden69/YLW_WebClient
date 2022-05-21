@@ -67,5 +67,35 @@ namespace YLW_WebClient.CAA
                 return "";
             }
         }
+
+        public static string GetDeptGrpCd(string rptnm)
+        {
+            switch (rptnm)
+            {
+                case "RptAdjSLRptSurvRptPersHyundai":
+                case "RptAdjSLRptSurvRptPersHyundaiMid":
+                    return "2";
+                case "RptAdjSLRptSurvRptPersHeungkuk":
+                case "RptAdjSLRptSurvRptPersHeungkukMid":
+                    return "3";
+                case "RptAdjSLRptSurvRptPersMeritz":
+                case "RptAdjSLRptSurvRptPersMeritzMid":
+                    return "4";
+                case "RptAdjSLRptSurvRptPersDBLife":
+                case "RptAdjSLRptSurvRptPersDBLifeMid":
+                    return "5";
+                case "RptAdjSLRptSurvRptPersDBLoss":
+                case "RptAdjSLRptSurvRptPersDBLossMid":
+                    return "6";
+                case "RptAdjSLRptSurvRptPersMGLossSmpl":
+                case "RptAdjSLRptSurvRptPersMGLossSmplMid":
+                    return "7";
+                case "RptAdjSLRptSurvRptPersMGLoss":
+                case "RptAdjSLRptSurvRptPersMGLossMid":
+                    return "8";
+                default:
+                    return "1";
+            }
+        }
     }
 }

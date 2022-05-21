@@ -75,7 +75,7 @@ namespace YLW_WebClient
                 List<IDbDataParameter> lstPara = new List<IDbDataParameter>();
                 lstPara.Clear();
                 lstPara.Add(new SqlParameter("@CompanySeq", param.CompanySeq));
-                lstPara.Add(new SqlParameter("@DeptGrpCd", "1"));
+                lstPara.Add(new SqlParameter("@DeptGrpCd", YLW_WebClient.CAA.uFunction.GetDeptGrpCd(param.ReportName)));
                 strSql = Utils.GetSQL(strSql, lstPara.ToArray());
                 strSql = strSql.Replace("\r\n", "");
                 DataSet ds = YLWService.MTRServiceModule.CallMTRGetDataSetPost(param.CompanySeq, strSql);

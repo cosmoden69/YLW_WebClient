@@ -15,7 +15,7 @@ using YLWService;
 
 namespace YLW_WebClient.CAA
 {
-    public partial class ucInputer : UserControl
+    public partial class ucInputer : UserControl, ISmplInputer
     {
         public ReportParam param = null;
         public  bool SmplAuth = false;

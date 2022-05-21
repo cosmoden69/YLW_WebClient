@@ -76,7 +76,7 @@ namespace YLW_WebClient
                 dr["AcptMgmtSeq"] = param.AcptMgmtSeq;
                 dr["ReSurvAsgnNo"] = param.ReSurvAsgnNo;
                 dr["DcmgDocNo"] = "";
-                dr["DeptGrpCd"] = "1";   //인보험
+                dr["DeptGrpCd"] = YLW_WebClient.CAA.uFunction.GetDeptGrpCd(param.ReportName);   //인보험
                 dr["RprtSmplSeq"] = "";
                 dr["RprtSmplNm"] = txtRprtSmplNm.Text.Trim();
 

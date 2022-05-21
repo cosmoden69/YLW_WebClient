@@ -17,6 +17,8 @@ namespace YLW_WebClient.CAA
 {
     public partial class frmSampleView : Form
     {
+        YLW_WebClient.ISmplInputer smplIputer = null;
+
         string DeptGrpCd = "";
         string RprtSmplSeq = "";
         string RprtSmplNm = "";
@@ -36,9 +38,10 @@ namespace YLW_WebClient.CAA
         {
             try
             {
-                this.ucInputer1.SetReadOnlyMode(true);
-                this.ucInputer1.LoadDocument(p);
-                this.ucInputer1.Reload(yds);
+                smplIputer = GetInputer(this.DeptGrpCd);
+                smplIputer.SetReadOnlyMode(true);
+                smplIputer.LoadDocument(p);
+                smplIputer.Reload(yds);
 
                 return true;
             }
@@ -79,6 +82,52 @@ namespace YLW_WebClient.CAA
         private void btn_Exit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private ISmplInputer GetInputer(string dptgrp)
+        {
+            Control inputer = null;
+            if (dptgrp == "2")
+            {
+                inputer = new YLW_WebClient.CAA.ucHyundaiInputer();
+            }
+            else if (dptgrp == "3")
+            {
+                inputer = new YLW_WebClient.CAA.ucHeungkukInputer();
+            }
+            else if (dptgrp == "4")
+            {
+                inputer = new YLW_WebClient.CAA.ucMeritzInputer();
+            }
+            else if (dptgrp == "5")
+            {
+                inputer = new YLW_WebClient.CAA.ucDBLifeInputer();
+            }
+            else if (dptgrp == "6")
+            {
+                inputer = new YLW_WebClient.CAA.ucDBLossInputer();
+            }
+            else if (dptgrp == "7")
+            {
+                inputer = new YLW_WebClient.CAA.ucMGLossSmplInputer();
+            }
+            else if (dptgrp == "8")
+            {
+                inputer = new YLW_WebClient.CAA.ucMGLossInputer();
+            }
+            else
+            {
+                inputer = new YLW_WebClient.CAA.ucInputer();
+            }
+            inputer.BackColor = System.Drawing.Color.White;
+            inputer.Dock = System.Windows.Forms.DockStyle.Fill;
+            inputer.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            inputer.Location = new System.Drawing.Point(5, 47);
+            inputer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            inputer.Name = "ucInputer1";
+            inputer.Size = new System.Drawing.Size(753, 827);
+            this.Controls.Add(inputer);
+            return inputer as ISmplInputer;
         }
     }
 }
