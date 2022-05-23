@@ -4,10 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 using YLWService;
 using YLWService.Extensions;
@@ -147,7 +149,7 @@ namespace YLW_WebClient
                 if (e.ColumnIndex < 0 || e.ColumnIndex >= dgv.ColumnCount) return;
                 string acptmgmtseq = Utils.ConvertToString(this.dgv.Rows[e.RowIndex].Cells["AcptMgmtSeq"].Value);
                 string resurvasgnno = Utils.ConvertToString(this.dgv.Rows[e.RowIndex].Cells["ReSurvAsgnNo"].Value);
-                string grpcd = Utils.ConvertToString(this.dgv.Rows[e.RowIndex].Cells["DeptGrpCd"].Value);
+                string grpcd = Utils.ConvertToString(this.dgv.Rows[e.RowIndex].Cells["DeptGrpCd"].Value).Trim();
                 string smplseq = Utils.ConvertToString(this.dgv.Rows[e.RowIndex].Cells["RprtSmplSeq"].Value);
                 string smplnm = Utils.ConvertToString(this.dgv.Rows[e.RowIndex].Cells["RprtSmplNm"].Value);
 
@@ -160,7 +162,7 @@ namespace YLW_WebClient
 
                 YLWService.YlwSecurityJson security = YLWService.MTRServiceModule.SecurityJson.Clone();  //깊은복사
                 security.serviceId = "Metro.Package.AdjSL.BisCclsRprtMngPersCSSmpl";
-                security.methodId = "Query";
+                security.methodId = "QueryXml";
                 security.companySeq = p.CompanySeq;
 
                 DataSet ds = new DataSet("ROOT");
@@ -191,9 +193,54 @@ namespace YLW_WebClient
                     return;
                 }
 
+                string xml = "";
+                if (yds.Tables.Contains("DataBlock11") && yds.Tables["DataBlock11"].Rows.Count > 0) xml = yds.Tables["DataBlock11"].Rows[0]["XmlData"].ToString();
+                if (xml == "") xml = yds.GetXml();
+
+                string s_CAA_XSD = "";
+
+                if (grpcd == "2")
+                {
+                    s_CAA_XSD = System.Windows.Forms.Application.StartupPath + @"\BisCclsRprtMngPersHyundai.xsd";
+                }
+                else if (grpcd == "3")
+                {
+                    s_CAA_XSD = System.Windows.Forms.Application.StartupPath + @"\BisCclsRprtMngPersHeungkuk.xsd";
+                }
+                else if (grpcd == "4")
+                {
+                    s_CAA_XSD = System.Windows.Forms.Application.StartupPath + @"\BisCclsRprtMngPersMeritz.xsd";
+                }
+                else if (grpcd == "5")
+                {
+                    s_CAA_XSD = System.Windows.Forms.Application.StartupPath + @"\BisCclsRprtMngPersDBLife.xsd";
+                }
+                else if (grpcd == "6")
+                {
+                    s_CAA_XSD = System.Windows.Forms.Application.StartupPath + @"\BisCclsRprtMngPersDBLoss.xsd";
+                }
+                else if (grpcd == "7")
+                {
+                    s_CAA_XSD = System.Windows.Forms.Application.StartupPath + @"\BisCclsRprtMngPersMGLossSmpl.xsd";
+                }
+                else if (grpcd == "8")
+                {
+                    s_CAA_XSD = System.Windows.Forms.Application.StartupPath + @"\BisCclsRprtMngPersMGLoss.xsd";
+                }
+                else
+                {
+                    s_CAA_XSD = System.Windows.Forms.Application.StartupPath + @"\BisCclsRprtMngPersCS.xsd";
+                }
+                DataSet pds = new DataSet();
+                pds.ReadXml(s_CAA_XSD);
+
+                using (XmlReader xmlReader = XmlReader.Create(new StringReader(xml)))
+                {
+                    pds.ReadXml(xmlReader);
+                }
                 CAA.frmSampleView frm = new CAA.frmSampleView(grpcd, smplseq, smplnm);
                 frm.Show();
-                frm.LoadDocument(p, yds);
+                frm.LoadDocument(p, pds);
                 this.Close();
 
             }

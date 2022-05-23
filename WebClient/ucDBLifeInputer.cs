@@ -20,19 +20,7 @@ namespace YLW_WebClient.CAA
         public ReportParam param = null;
         public  bool SmplAuth = false;
 
-        private bool _readOnlyMode = false;
-        public bool ReadOnlyMode
-        {
-            get
-            {
-                return _readOnlyMode;
-            }
-            set
-            {
-                _readOnlyMode = value;
-                SetReadOnlyMode(_readOnlyMode);
-            }
-        }
+        private bool readOnlyMode = false;
 
         private string acptDt = "";
         private string custName = "";
@@ -259,8 +247,8 @@ namespace YLW_WebClient.CAA
 
         public void SetReadOnlyMode(bool rdonly)
         {
-            this.ReadOnlyMode = rdonly;
-            if (ReadOnlyMode)
+            this.readOnlyMode = rdonly;
+            if (readOnlyMode)
             {
                 userno1.SetReadOnlyMode(rdonly);
                 dbLifeAccident1.SetReadOnlyMode(rdonly);
@@ -369,7 +357,7 @@ namespace YLW_WebClient.CAA
                         userno1.AddRow(drow);
                     }
                 }
-                if (!ReadOnlyMode)
+                if (!readOnlyMode)
                 {
                     userno1.AddEmptyRow();
                 }
@@ -385,7 +373,7 @@ namespace YLW_WebClient.CAA
                         itm.Gubun = "2";
                     }
                 }
-                if (!ReadOnlyMode)
+                if (!readOnlyMode)
                 {
                     dbLifeAccident1.AddEmptyRow();
                 }
@@ -418,7 +406,7 @@ namespace YLW_WebClient.CAA
                         dgv_Othr.Rows[dgv_Othr.RowCount - 1].Cells["othrOthInsurCtrtSeq"].Value = drow["OthInsurCtrtSeq"];                // 순번
                     }
                 }
-                if (!ReadOnlyMode)
+                if (!readOnlyMode)
                 {
                     dgv_Othr.AllowUserToAddRows = true;
                 }
@@ -467,7 +455,7 @@ namespace YLW_WebClient.CAA
                         DBLifeDetail11.AddRow(drow);
                     }
                 }
-                if (!ReadOnlyMode)
+                if (!readOnlyMode)
                 {
                     DBLifeDetail11.AddEmptyRow();
                 }
@@ -487,7 +475,7 @@ namespace YLW_WebClient.CAA
                         dgv_Prg.Rows[dgv_Prg.RowCount - 1].Cells["prgPrgMgtSeq"].Value = drow["PrgMgtSeq"];           // 순번
                     }
                 }
-                if (!ReadOnlyMode)
+                if (!readOnlyMode)
                 {
                     dgv_Prg.AllowUserToAddRows = true;
                 }
@@ -563,7 +551,7 @@ namespace YLW_WebClient.CAA
         {
             try
             {
-                if (ReadOnlyMode)
+                if (readOnlyMode)
                 {
                     if (e.Control is TextBox)
                         ((TextBox)e.Control).ReadOnly = true;
@@ -660,7 +648,7 @@ namespace YLW_WebClient.CAA
             {
                 DataGridView grd = (DataGridView)sender;
                 DataGridViewCell cel = grd.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                if (ReadOnlyMode)
+                if (readOnlyMode)
                 {
                     if (cel is DataGridViewComboBoxCell) e.Cancel = true;
                 }
@@ -713,7 +701,7 @@ namespace YLW_WebClient.CAA
         {
             try
             { 
-                if (ReadOnlyMode) return;
+                if (readOnlyMode) return;
                 DataGridView dgv = (DataGridView)sender;
 
                 if (e.RowIndex > -1)
@@ -865,7 +853,7 @@ namespace YLW_WebClient.CAA
                         userno1.AddRow(drow);
                     }
                 }
-                if (!ReadOnlyMode)
+                if (!readOnlyMode)
                 {
                     userno1.AddEmptyRow();
                 }
@@ -950,6 +938,38 @@ namespace YLW_WebClient.CAA
             dr = dt.Rows.Add();
             dr["CmplExptFg"] = ucDBLifePan21.CmplExptFg;
 
+            dr["AcptDt"] = ucDBLifePan11.AcptDt;
+            dr["AcptMgmtNo"] = ucDBLifePan11.AcptMgmtNo;
+            dr["InsurPrdt"] = ucDBLifePan11.InsurPrdt;
+            dr["InsurNo"] = ucDBLifePan11.InsurNo;
+            dr["InsurNoOld"] = ucDBLifePan11.InsurNoOld;
+            dr["Insured"] = ucDBLifePan11.Insured;
+            dr["IsrdRegno1"] = ucDBLifePan11.IsrdRegno1;
+            dr["IsrdRegno2"] = ucDBLifePan11.IsrdRegno2;
+            dr["IsrdJob"] = ucDBLifePan11.IsrdJob;
+            dr["IsrdJobDmnd"] = ucDBLifePan11.IsrdJobDmnd;
+            dr["IsrdTel"] = ucDBLifePan11.IsrdTel;
+            dr["IsrdAddressSeq"] = ucDBLifePan11.IsrdAddressSeq;
+            dr["IsrdAddressName"] = ucDBLifePan11.IsrdAddressName;
+
+            dr["SurvAsgnEmpName"] = ucDBLifePan21.SurvAsgnEmpName;
+            dr["InsurChrg"] = ucDBLifePan21.InsurChrg;
+            dr["SurvReqDt"] = ucDBLifePan21.SurvReqDt;
+            dr["AcptDt"] = ucDBLifePan21.AcptDt;
+            dr["CclsDt"] = ucDBLifePan21.CclsDt;
+            dr["LasRptSbmsDt"] = ucDBLifePan21.LasRptSbmsDt;
+
+            dr["SurvAsgnEmpName"] = ucDBLifePan31.SurvAsgnEmpName;
+            dr["SurvAsgnEmpHP"] = ucDBLifePan31.SurvAsgnEmpHP;
+            dr["SurvAsgnTeamLeadName"] = ucDBLifePan31.SurvAsgnTeamLeadName;
+            dr["SurvAsgnTeamLeadOP"] = ucDBLifePan31.SurvAsgnTeamLeadOP;
+            dr["ChrgAdjuster"] = ucDBLifePan31.ChrgAdjuster;
+            dr["SurvAsgnTeamName"] = ucDBLifePan31.SurvAsgnTeamName;
+            dr["LeadAdjuster"] = ucDBLifePan31.LeadAdjuster;
+            dr["SurvAsgnEmpRank"] = ucDBLifePan31.SurvAsgnEmpRank;
+
+            dr["InsurCo"] = custName;
+
             // 손해액 범위 조사
             dt = ds.Tables["DataBlock3"];
             for (int i = 0; i < dbLifeAccident1.Rows.Count; i++)
@@ -980,7 +1000,7 @@ namespace YLW_WebClient.CAA
                 dr["OthCtrtDt"] = Utils.DateFormat(dgv_Othr.Rows[i].Cells["othrOthCtrtDt"].Value, "yyyyMMdd");
                 dr["OthInsurPrdt"] = dgv_Othr.Rows[i].Cells["othrOthInsurPrdt"].Value;
                 dr["OthInsurSurvOpni"] = dgv_Othr.Rows[i].Cells["othrOthInsurSurvOpni"].Value;
-                dr["OthInsurRegsAmt"] = dgv_Othr.Rows[i].Cells["othrOthInsurRegsAmt"].Value;
+                dr["OthInsurRegsAmt"] = Utils.ToDouble(dgv_Othr.Rows[i].Cells["othrOthInsurRegsAmt"].Value);
                 dr["OthInsurCtrtSeq"] = Utils.ToInt(dgv_Othr.Rows[i].Cells["othrOthInsurCtrtSeq"].Value);
             }
 
@@ -990,6 +1010,16 @@ namespace YLW_WebClient.CAA
                 dr = dt.Rows.Add();
                 ucDBLifePan41.GetRow(Utils.ConvertToString(i), dr);
             }
+
+            dt = ds.Tables["DataBlock7"];
+            dr = dt.Rows.Add();
+            dr["InvcAmtCof"] = Utils.ToDecimal(ucDBLifeInvoice1.InvcAmtCof);
+            dr["InvcAdjFeeCdNm"] = Utils.ToDecimal(ucDBLifeInvoice1.InvcAdjFeeCdNm);
+            dr["InvcAdjFee"] = Utils.ToDecimal(ucDBLifeInvoice1.InvcAdjFee);
+            dr["InvcDocuAmt"] = Utils.ToDecimal(ucDBLifeInvoice1.InvcDocuAmt);
+            dr["InvcCsltReqAmt"] = Utils.ToDecimal(ucDBLifeInvoice1.InvcCsltReqAmt);
+            dr["InvcTrspExps"] = Utils.ToDecimal(ucDBLifeInvoice1.InvcTrspExps);
+            dr["InvcIctvAmt"] = Utils.ToDecimal(ucDBLifeInvoice1.InvcIctvAmt);
 
             // 비용 세부항목 및 첨부 자료
             dt = ds.Tables["DataBlock8"];
@@ -1013,6 +1043,39 @@ namespace YLW_WebClient.CAA
                 dr["PrgMgtHed"] = dgv_Prg.Rows[i].Cells["prgPrgMgtHed"].Value;
                 dr["SurvGuideCnts"] = dgv_Prg.Rows[i].Cells["prgSurvGuideCnts"].Value;
                 dr["PrgMgtSeq"] = Utils.ToInt(dgv_Prg.Rows[i].Cells["prgPrgMgtSeq"].Value);
+            }
+
+            // 계약사항
+            dt = ds.Tables["DataBlock10"];
+            for (int i = 0; i < userno1.Rows.Count; i++)
+            {
+                if (userno1.Rows[i].IsNewRow) continue;
+                dr = dt.Rows.Add();
+                dr["InsurPrdt"] = userno1.Rows[i].InsurPrdt;             // 상품명
+                dr["InsurNo"] = userno1.Rows[i].InsurNo;                 // 증권번호
+                dr["CtrtDt"] = userno1.Rows[i].CtrtDt;                   // 보험시기
+                dr["CtrtExprDt"] = userno1.Rows[i].CtrtExprDt;            // 보험종기
+                dr["Insurant"] = userno1.Rows[i].Insurant;               // 계약자명
+                dr["CtrtStts"] = userno1.Rows[i].CtrtStts;
+                dr["CtrtSttsDt"] = userno1.Rows[i].CtrtSttsDt;
+
+                dr["IsrtRegno1"] = userno1.Rows[i].IsrtRegno1;
+                dr["IsrtRegno2"] = userno1.Rows[i].IsrtRegno2;
+                dr["IsrtTel"] = userno1.Rows[i].IsrtTel;
+                dr["Insured"] = userno1.Rows[i].Insured;
+                dr["IsrdRegno1"] = userno1.Rows[i].IsrdRegno1;
+                dr["IsrdRegno2"] = userno1.Rows[i].IsrdRegno2;
+                dr["IsrdTel"] = userno1.Rows[i].IsrdTel;
+                if (userno1.Rows[i].IsrdAddressSeq == "") dr["IsrdAddressSeq"] = DBNull.Value;
+                else dr["IsrdAddressSeq"] = userno1.Rows[i].IsrdAddressSeq;
+                dr["IsrdAddressName"] = userno1.Rows[i].IsrdAddressName;
+                dr["IsrdJob"] = userno1.Rows[i].IsrdJob;
+                dr["IsrdJobGrad"] = userno1.Rows[i].IsrdJobGrad;
+                dr["IsrdJobDmnd"] = userno1.Rows[i].IsrdJobDmnd;
+                dr["IsrdJobGradDmnd"] = userno1.Rows[i].IsrdJobGradDmnd;
+                dr["IsrdJobNow"] = userno1.Rows[i].IsrdJobNow;
+                dr["IsrdJobGradNow"] = userno1.Rows[i].IsrdJobGradNow;
+                dr["Bnfc"] = userno1.Rows[i].Bnfc;
             }
 
             return ds;

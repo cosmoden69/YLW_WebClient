@@ -231,7 +231,7 @@ namespace YLW_WebClient.CAA
             item.InsurRegsAmt = (!drow.Table.Columns.Contains("InsurRegsAmt") ? "" : Utils.ConvertToString(drow["InsurRegsAmt"]));  // 가입금액
             item.SetReadOnlyMode(this.readOnlyMode);
             this.Controls.Add(item);
-            //this.RefreshControl();
+            this.RefreshControl();
             return item;
         }
 

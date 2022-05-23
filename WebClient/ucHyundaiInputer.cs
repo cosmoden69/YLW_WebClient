@@ -20,19 +20,7 @@ namespace YLW_WebClient.CAA
         public ReportParam param = null;
         public  bool SmplAuth = false;
 
-        private bool _readOnlyMode = false;
-        public bool ReadOnlyMode
-        {
-            get
-            {
-                return _readOnlyMode;
-            }
-            set
-            {
-                _readOnlyMode = value;
-                SetReadOnlyMode(_readOnlyMode);
-            }
-        }
+        private bool readOnlyMode = false;
 
         private string acptDt = "";
         private string custName = "";
@@ -234,8 +222,8 @@ namespace YLW_WebClient.CAA
         }
         public void SetReadOnlyMode(bool rdonly)
         {
-            this.ReadOnlyMode = rdonly;
-            if (ReadOnlyMode)
+            this.readOnlyMode = rdonly;
+            if (readOnlyMode)
             {
                 userno1.SetReadOnlyMode(rdonly);
                 hyundaiAccident1.SetReadOnlyMode(rdonly);
@@ -303,7 +291,7 @@ namespace YLW_WebClient.CAA
                         userno1.AddRow(drow);
                     }
                 }
-                if (!ReadOnlyMode)
+                if (!readOnlyMode)
                 {
                     userno1.AddEmptyRow();
                 }
@@ -326,7 +314,7 @@ namespace YLW_WebClient.CAA
                         dgv_Cltr.Rows[dgv_Cltr.RowCount - 1].Cells["cltrSubSeq"].Value = drow["SubSeq"];             // 순번
                     }
                 }
-                if (!ReadOnlyMode)
+                if (!readOnlyMode)
                 {
                     dgv_Cltr.AllowUserToAddRows = true;
                 }
@@ -390,7 +378,7 @@ namespace YLW_WebClient.CAA
                         itm.Gubun = "2";
                     }
                 }
-                if (!ReadOnlyMode)
+                if (!readOnlyMode)
                 {
                     hyundaiAccident1.AddEmptyRow();
                 }
@@ -411,7 +399,7 @@ namespace YLW_WebClient.CAA
                         dgv_Prg.Rows[dgv_Prg.RowCount - 1].Cells["prgPrgMgtSeq"].Value = drow["PrgMgtSeq"];           // 순번
                     }
                 }
-                if (!ReadOnlyMode)
+                if (!readOnlyMode)
                 {
                     dgv_Prg.AllowUserToAddRows = true;
                 }
@@ -487,7 +475,7 @@ namespace YLW_WebClient.CAA
         {
             try
             {
-                if (ReadOnlyMode)
+                if (readOnlyMode)
                 {
                     if (e.Control is TextBox)
                         ((TextBox)e.Control).ReadOnly = true;
@@ -584,7 +572,7 @@ namespace YLW_WebClient.CAA
             {
                 DataGridView grd = (DataGridView)sender;
                 DataGridViewCell cel = grd.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                if (ReadOnlyMode)
+                if (readOnlyMode)
                 {
                     if (cel is DataGridViewComboBoxCell) e.Cancel = true;
                 }
@@ -637,7 +625,7 @@ namespace YLW_WebClient.CAA
         {
             try
             { 
-                if (ReadOnlyMode) return;
+                if (readOnlyMode) return;
                 DataGridView dgv = (DataGridView)sender;
 
                 if (e.RowIndex > -1)
@@ -738,7 +726,9 @@ namespace YLW_WebClient.CAA
             dr = dt.Rows.Add();
             dr["AcdtDt"] = ucHyundaiPan11.AcdtDt;                    // 사고일자
             dr["AcdtTm"] = ucHyundaiPan11.AcdtTm;                    // 사고시간
+            dr["AcdtAddressName"] = ucHyundaiPan11.AcdtAddressName;
             dr["AcdtCnts"] = ucHyundaiPan11.AcdtCnts;                // 사고내용
+            dr["InsurCo"] = custName;
 
             // 계약사항
             dt = ds.Tables["DataBlock3"];

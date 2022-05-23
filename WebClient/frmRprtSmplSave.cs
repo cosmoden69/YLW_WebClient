@@ -60,11 +60,13 @@ namespace YLW_WebClient
 
                 YLWService.YlwSecurityJson security = YLWService.MTRServiceModule.SecurityJson.Clone();  //깊은복사
                 security.serviceId = "Metro.Package.AdjSL.BisCclsRprtMngPersCSSmpl";
-                security.methodId = "Save";
+                security.methodId = "SaveXml";
                 security.companySeq = param.CompanySeq;
                 security.certId = security.certId + "_1";  // securityType = 1 --> ylwhnpsoftgw_1
                 security.securityType = 1;
                 security.userId = param.UserID;
+
+                string xml = pds.GetXml();
 
                 DataSet ds = pds;
                 DataTable dt = ds.Tables["DataBlock1"];
@@ -79,6 +81,11 @@ namespace YLW_WebClient
                 dr["DeptGrpCd"] = YLW_WebClient.CAA.uFunction.GetDeptGrpCd(param.ReportName);   //인보험
                 dr["RprtSmplSeq"] = "";
                 dr["RprtSmplNm"] = txtRprtSmplNm.Text.Trim();
+
+                DataTable dt11 = (ds.Tables.Contains("DataBlock11") ? ds.Tables["DataBlock11"] : ds.Tables.Add("DataBlock11"));
+                if (!dt11.Columns.Contains("XmlData")) dt11.Columns.Add("XmlData");
+                DataRow dr11 = (dt11.Rows.Count > 0 ? dt11.Rows[0] : dt11.Rows.Add());
+                dr11["XmlData"] = xml;
 
                 DataSet yds = YLWService.MTRServiceModule.CallMTRServiceCallPost(security, ds);
                 if (yds == null)

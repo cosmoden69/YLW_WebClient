@@ -89,6 +89,7 @@ namespace YLW_WebClient.CAA
             this.txtShrtCnts3.SetReadOnly(rdonly);
             this.txtLongCnts1.SetReadOnly(rdonly);
             this.txtLongCnts2.SetReadOnly(rdonly);
+            this.btnDel.Enabled = !rdonly;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

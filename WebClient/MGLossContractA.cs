@@ -123,7 +123,7 @@ namespace YLW_WebClient.CAA
             this.txtInsurant.SetReadOnly(rdonly);
             this.txtInsured.SetReadOnly(rdonly);
             this.txtIsrdTel.SetReadOnly(rdonly);
-            //this.txtIsrdAddressName.SetReadOnly(rdonly);
+            this.txtIsrdAddressName.SetReadOnly(rdonly);
             for (int ii = 0; ii < this.Rows.Count; ii++)
             {
                 this.Rows[ii].SetReadOnlyMode(rdonly);

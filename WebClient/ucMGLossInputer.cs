@@ -822,6 +822,15 @@ namespace YLW_WebClient.CAA
             dr["ReSurvAsgnNo"] = param.ReSurvAsgnNo;
             dr["DcmgDocNo"] = "";
 
+            dt = ds.Tables["DataBlock2"];
+            dr = dt.Rows.Add();
+            dr["AcptDt"] = ucMGLossPan11.AcptDt;
+            dr["FldRptSbmsDt"] = ucMGLossPan11.FldRptSbmsDt;
+            dr["MidRptSbmsDt"] = ucMGLossPan11.MidRptSbmsDt;
+            dr["DlyRprtDt"] = ucMGLossPan11.DlyRprtDt;
+            dr["LasRptSbmsDt"] = ucMGLossPan11.LasRptSbmsDt;
+            dr["InsurCo"] = custName;
+
             dt = ds.Tables["DataBlock3"];
             dr = dt.Rows.Add();
             dr["CmplPnt1"] = ucMGLossPan11.CmplPnt1;                // 민원지수1
@@ -857,6 +866,8 @@ namespace YLW_WebClient.CAA
                 dr["Insurant"] = mgLossContract1.Rows[i].Insurant;               // 계약자명
                 dr["Insured"] = mgLossContract1.Rows[i].Insured;                 // 피보험자
                 dr["IsrdTel"] = mgLossContract1.Rows[i].IsrdTel;                 // 연락처
+                dr["IsrdAddressName"] = mgLossContract1.Rows[i].IsrdAddressName;   // 주소
+
                 dr["CtrtStts"] = mgLossContract1.Rows[i].CtrtStts;
                 dr["CtrtSttsDt"] = mgLossContract1.Rows[i].CtrtSttsDt;
                 dr["IsrtRegno1"] = mgLossContract1.Rows[i].IsrtRegno1;

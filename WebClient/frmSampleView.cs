@@ -126,7 +126,7 @@ namespace YLW_WebClient.CAA
             inputer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             inputer.Name = "ucInputer1";
             inputer.Size = new System.Drawing.Size(753, 827);
-            this.Controls.Add(inputer);
+            panel1.Controls.Add(inputer);
             return inputer as ISmplInputer;
         }
     }

@@ -147,26 +147,31 @@ namespace YLW_WebClient.CAA
 
         private void PanelExLine1_Click(object sender, EventArgs e)
         {
+            if (this.readOnlyMode) return;
             SetPanelLine1(sender as DevComponents.DotNetBar.PanelEx);
         }
 
         private void PanelExLine2_Click(object sender, EventArgs e)
         {
+            if (this.readOnlyMode) return;
             SetPanelLine2(sender as DevComponents.DotNetBar.PanelEx);
         }
 
         private void PanelExLine3_Click(object sender, EventArgs e)
         {
+            if (this.readOnlyMode) return;
             SetPanelLine3(sender as DevComponents.DotNetBar.PanelEx);
         }
 
         private void PanelExLine4_Click(object sender, EventArgs e)
         {
+            if (this.readOnlyMode) return;
             SetPanelLine4(sender as DevComponents.DotNetBar.PanelEx);
         }
 
         private void PanelExLine5_Click(object sender, EventArgs e)
         {
+            if (this.readOnlyMode) return;
             SetPanelLine5(sender as DevComponents.DotNetBar.PanelEx);
         }
 
@@ -234,7 +239,6 @@ namespace YLW_WebClient.CAA
             panelExC1.Text = "";
             if (p != null)
             {
-                if (this.readOnlyMode) return;
                 if (p == panelExA1) p.Text = "○";
                 else if (p == panelExB1) p.Text = "○";
                 else if (p == panelExC1) p.Text = "○";
@@ -249,7 +253,6 @@ namespace YLW_WebClient.CAA
             panelExC2.Text = "";
             if (p != null)
             {
-                if (this.readOnlyMode) return;
                 if (p == panelExA2) p.Text = "○";
                 else if (p == panelExB2) p.Text = "○";
                 else if (p == panelExC2) p.Text = "○";
@@ -264,7 +267,6 @@ namespace YLW_WebClient.CAA
             panelExC3.Text = "";
             if (p != null)
             {
-                if (this.readOnlyMode) return;
                 if (p == panelExA3) p.Text = "○";
                 else if (p == panelExB3) p.Text = "○";
                 else if (p == panelExC3) p.Text = "○";
@@ -279,7 +281,6 @@ namespace YLW_WebClient.CAA
             panelExC4.Text = "";
             if (p != null)
             {
-                if (this.readOnlyMode) return;
                 if (p == panelExA4) p.Text = "○";
                 else if (p == panelExB4) p.Text = "○";
                 else if (p == panelExC4) p.Text = "○";
@@ -294,7 +295,6 @@ namespace YLW_WebClient.CAA
             panelExC5.Text = "";
             if (p != null)
             {
-                if (this.readOnlyMode) return;
                 if (p == panelExA5) p.Text = "○";
                 else if (p == panelExB5) p.Text = "○";
                 else if (p == panelExC5) p.Text = "○";

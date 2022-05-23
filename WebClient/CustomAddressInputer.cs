@@ -37,6 +37,7 @@ namespace YLW_WebClient
             txtAddr.ReadOnly = rdOnly;
             if (!rdOnly) txtAddr.FocusHighlightEnabled = true;
             else txtAddr.FocusHighlightEnabled = false;
+            btnFind.Enabled = !rdOnly;
         }
 
         private void TxtAddr_Enter(object sender, EventArgs e)
