@@ -230,7 +230,7 @@ namespace YLW_WebClient
 
                 YLWService.YlwSecurityJson security = YLWService.MTRServiceModule.SecurityJson.Clone();  //깊은복사
                 security.serviceId = "Metro.Package.AdjSL.BisCclsRprtMngPersCS";
-                security.methodId = "ReportSave";
+                security.methodId = "ReportHistorySave";
                 security.companySeq = _param.CompanySeq;
                 security.certId = security.certId + "_1";  // securityType = 1 --> ylwhnpsoftgw_1
                 security.securityType = 1;
@@ -241,6 +241,7 @@ namespace YLW_WebClient
                 dt10.Columns.Add("AcptMgmtSeq");
                 dt10.Columns.Add("ReSurvAsgnNo");
                 dt10.Columns.Add("ReportType");
+                dt10.Columns.Add("Seq");
                 dt10.Columns.Add("FileName");
                 dt10.Columns.Add("FileSeq");
 
