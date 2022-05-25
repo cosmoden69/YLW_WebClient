@@ -37,6 +37,9 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.lblPageCount = new System.Windows.Forms.ToolStripLabel();
             this.pic = new DevExpress.XtraEditors.PictureEdit();
+            this.btnZoomIn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnZoomOut = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic.Properties)).BeginInit();
             this.SuspendLayout();
@@ -49,6 +52,9 @@
             this.btnNext,
             this.btnLast,
             this.toolStripSeparator1,
+            this.btnZoomIn,
+            this.btnZoomOut,
+            this.toolStripSeparator2,
             this.lblPageCount});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -110,13 +116,36 @@
             this.pic.Name = "pic";
             this.pic.Properties.AllowScrollOnMouseWheel = DevExpress.Utils.DefaultBoolean.True;
             this.pic.Properties.AllowScrollViaMouseDrag = true;
-            this.pic.Properties.AllowZoomOnMouseWheel = DevExpress.Utils.DefaultBoolean.True;
             this.pic.Properties.ShowScrollBars = true;
             this.pic.Properties.ShowZoomSubMenu = DevExpress.Utils.DefaultBoolean.True;
             this.pic.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
+            this.pic.Properties.ZoomAcceleration = 2D;
             this.pic.Properties.ZoomingOperationMode = DevExpress.XtraEditors.Repository.ZoomingOperationMode.ControlMouseWheel;
             this.pic.Size = new System.Drawing.Size(343, 444);
             this.pic.TabIndex = 1;
+            // 
+            // btnZoomIn
+            // 
+            this.btnZoomIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnZoomIn.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomIn.Image")));
+            this.btnZoomIn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnZoomIn.Name = "btnZoomIn";
+            this.btnZoomIn.Size = new System.Drawing.Size(23, 22);
+            this.btnZoomIn.Text = "toolStripButton1";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnZoomOut
+            // 
+            this.btnZoomOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnZoomOut.Image = ((System.Drawing.Image)(resources.GetObject("btnZoomOut.Image")));
+            this.btnZoomOut.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnZoomOut.Name = "btnZoomOut";
+            this.btnZoomOut.Size = new System.Drawing.Size(23, 22);
+            this.btnZoomOut.Text = "toolStripButton2";
             // 
             // ucImageViewer
             // 
@@ -144,5 +173,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel lblPageCount;
         private DevExpress.XtraEditors.PictureEdit pic;
+        private System.Windows.Forms.ToolStripButton btnZoomIn;
+        private System.Windows.Forms.ToolStripButton btnZoomOut;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

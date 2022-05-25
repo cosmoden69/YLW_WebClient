@@ -25,10 +25,13 @@ namespace YLW_WebClient
             btnPrev.Click += BtnPrev_Click;
             btnNext.Click += BtnNext_Click;
             btnLast.Click += BtnLast_Click;
+            btnZoomIn.Click += BtnZoomIn_Click;
+            btnZoomOut.Click += BtnZoomOut_Click;
         }
 
         public void SetImage(List<Image> img)
         {
+            pic.Properties.ZoomPercent = 100;
             _images = img;
             SetPicture(0);
         }
@@ -50,6 +53,16 @@ namespace YLW_WebClient
             DevExpress.XtraReports.UI.ReportPrintTool rpt = new DevExpress.XtraReports.UI.ReportPrintTool(rpt1);
             rpt.AutoShowParametersPanel = false;
             rpt.ShowPreviewDialog();
+        }
+
+        private void BtnZoomOut_Click(object sender, EventArgs e)
+        {
+            pic.Properties.ZoomPercent -= 6;
+        }
+
+        private void BtnZoomIn_Click(object sender, EventArgs e)
+        {
+            pic.Properties.ZoomPercent += 6;
         }
 
         private void BtnLast_Click(object sender, EventArgs e)
