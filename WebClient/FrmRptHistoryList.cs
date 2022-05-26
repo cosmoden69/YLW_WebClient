@@ -38,12 +38,16 @@ namespace YLW_WebClient
             this.dgv.AddColumn("TEXTBOX", "AcptMgmtSeq", "수임내부코드", 10, false);
             this.dgv.AddColumn("TEXTBOX", "ReSurvAsgnNo", "재조사순번", 10, false);
             this.dgv.AddColumn("TEXTBOX", "ReportType", "보고서구분", 10, false);
-            this.dgv.AddColumn("TEXTBOX", "Seq", "순번", 10, false);
+            this.dgv.AddColumn("TEXTBOX", "Seq", "순번", 10, false);          
             this.dgv.AddColumn("TEXTBOX", "FileName", "파일명", 10, false);
             this.dgv.AddColumn("TEXTBOX", "FileSeq", "파일순번", 10, false);
             this.dgv.AddColumn("TEXTBOX", "SysDt", "수정일시", 200, true, true);
             this.dgv.AddColumn("TEXTBOX", "UserSeq", "수정자사번", 10, false);
-            this.dgv.AddColumn("TEXTBOX", "UserName", "수정자", 150, true, true);
+            this.dgv.AddColumn("TEXTBOX", "UserName", "수정자", 100, true, true);
+            this.dgv.AddColumn("TEXTBOX", "RptSbmsDt", "제출일자", 80, true);//제출일자
+            //this.dgv.AddColumn("TEXTBOX", "SurvEmp", "조사자", 10, false);//조사자
+            //this.dgv.AddColumn("TEXTBOX", "RprtWroutDt", "작성일자", 10, false);//작성일자
+            //this.dgv.AddColumn("TEXTBOX", "RprtWroutTm", "작성시각", 10, false);//작성시각
             this.dgv.AllowUserToAddRows = false;
             this.dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
