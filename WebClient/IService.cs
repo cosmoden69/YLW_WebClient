@@ -62,5 +62,9 @@ namespace YLW_WebClient
         [OperationContract]
         [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/OpenSendSSLImg/{value}")]
         string OpenSendSSLImg(string value);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare, UriTemplate = "/OpenRptHistList/{value}")]
+        string OpenRptHistList(string value);
     }
 }

@@ -24,6 +24,8 @@ namespace YLW_WebClient
     // 구현 함수
     public class Service : IService
     {
+        private static FrmRptHistoryList RptHistList = null;
+
         // /OpenDocx/{value}의 형식으로 접속되면 호출되어 처리한다.
         public string OpenDocx(string value)
         {
@@ -532,6 +534,42 @@ namespace YLW_WebClient
 
                 CAA.frmSendSSLImg.ShowPreview(para);
                 frm = CAA.frmSendSSLImg.Current;
+
+                return "OK";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return ex.Message;
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+                frmWait.SplashClose(null);
+                User32Helper.CloseWindow("localhost:8080/", 500, frm);
+            }
+        }
+
+        public string OpenRptHistList(string value)
+        {
+            Form frm = null;
+
+            try
+            {
+                frmWait.SplashShow();
+                Cursor.Current = Cursors.WaitCursor;
+
+                string addmsg = "\r\n\r\n프로그램이 업데이트되면 보고서를 다시 작성하세요";
+                UpdateCheck(addmsg);
+
+                JsonSerializerSettings settings = new JsonSerializerSettings() { StringEscapeHandling = StringEscapeHandling.EscapeHtml };
+                ReportParam para = JsonConvert.DeserializeObject<ReportParam>(value, settings);
+
+                RptHistList = new FrmRptHistoryList();
+
+                FrmRptHistoryList.ShowPreview(RptHistList);
+                FrmRptHistoryList.Current.LoadDocument(para);
+                RptHistList = FrmRptHistoryList.Current;
 
                 return "OK";
             }
