@@ -30,6 +30,7 @@ namespace YLW_WebClient
         {
             InitializeComponent();
 
+            this.btnRefresh.Click += BtnRefresh_Click;
             this.btnView.Click += BtnView_Click;
             this.btnCancel.Click += BtnCancel_Click;
             this.dgv.CellDoubleClick += Dgv_CellDoubleClick;
@@ -125,6 +126,18 @@ namespace YLW_WebClient
                     return;
                 }
                 this.dgv.DataSource = yds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BtnRefresh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GetList();
             }
             catch (Exception ex)
             {

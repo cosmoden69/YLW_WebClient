@@ -33,12 +33,14 @@
             this.btnView = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnRefresh);
             this.panel1.Controls.Add(this.btnView);
             this.panel1.Controls.Add(this.btnCancel);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -83,6 +85,17 @@
             this.dgv.Size = new System.Drawing.Size(424, 660);
             this.dgv.TabIndex = 2;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.Location = new System.Drawing.Point(12, 10);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(72, 31);
+            this.btnRefresh.TabIndex = 6;
+            this.btnRefresh.TabStop = false;
+            this.btnRefresh.Text = "다시 조회";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            // 
             // FrmRptHistoryList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -105,5 +118,6 @@
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnView;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
