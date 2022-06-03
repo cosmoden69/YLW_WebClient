@@ -29,22 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAttachFileView));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.btnDownload = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
             this.txtFileSeq = new System.Windows.Forms.TextBox();
             this.btnQuery = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabList = new System.Windows.Forms.TabPage();
-            this.dgvList = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.panBase = new System.Windows.Forms.Panel();
             this.pdf = new DevExpress.XtraPdfViewer.PdfViewer();
+            this.dgvList = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,39 +54,69 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pic = new YLW_WebClient.ucImageViewer();
             this.fileImage = new System.Windows.Forms.DataGridViewImageColumn();
             this.AttachFileSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AttachFileNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FilePathName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileExt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileBase64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pic = new YLW_WebClient.ucImageViewer();
+            this.WorkingTag = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabList.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.panBase.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnExit);
+            this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.btnDownload);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnPrint);
             this.panel1.Controls.Add(this.txtFileSeq);
             this.panel1.Controls.Add(this.btnQuery);
-            this.panel1.Controls.Add(this.btnExit);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1090, 51);
             this.panel1.TabIndex = 0;
             // 
+            // btnExit
+            // 
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnExit.Image = ((System.Drawing.Image)(resources.GetObject("btnExit.Image")));
+            this.btnExit.Location = new System.Drawing.Point(1027, 8);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(38, 34);
+            this.btnExit.TabIndex = 26;
+            this.btnExit.TabStop = false;
+            this.btnExit.UseVisualStyleBackColor = true;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.Location = new System.Drawing.Point(765, 8);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(110, 34);
+            this.btnSave.TabIndex = 25;
+            this.btnSave.TabStop = false;
+            this.btnSave.Text = "수정내용 저장";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
             // btnDownload
             // 
             this.btnDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDownload.Location = new System.Drawing.Point(859, 8);
+            this.btnDownload.Location = new System.Drawing.Point(881, 8);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Size = new System.Drawing.Size(72, 34);
             this.btnDownload.TabIndex = 5;
@@ -104,7 +136,7 @@
             // btnPrint
             // 
             this.btnPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrint.Location = new System.Drawing.Point(937, 8);
+            this.btnPrint.Location = new System.Drawing.Point(959, 8);
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(61, 34);
             this.btnPrint.TabIndex = 3;
@@ -128,16 +160,6 @@
             this.btnQuery.Text = "조회";
             this.btnQuery.UseVisualStyleBackColor = true;
             // 
-            // btnExit
-            // 
-            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExit.Location = new System.Drawing.Point(1004, 8);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(61, 34);
-            this.btnExit.TabIndex = 0;
-            this.btnExit.Text = "닫기";
-            this.btnExit.UseVisualStyleBackColor = true;
-            // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabList);
@@ -159,6 +181,24 @@
             this.tabList.TabIndex = 0;
             this.tabList.Text = "목록";
             this.tabList.UseVisualStyleBackColor = true;
+            // 
+            // panBase
+            // 
+            this.panBase.Controls.Add(this.pic);
+            this.panBase.Controls.Add(this.pdf);
+            this.panBase.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panBase.Location = new System.Drawing.Point(3, 221);
+            this.panBase.Name = "panBase";
+            this.panBase.Size = new System.Drawing.Size(1076, 573);
+            this.panBase.TabIndex = 36;
+            // 
+            // pdf
+            // 
+            this.pdf.Location = new System.Drawing.Point(42, 38);
+            this.pdf.Name = "pdf";
+            this.pdf.NavigationPaneInitialVisibility = DevExpress.XtraPdfViewer.PdfNavigationPaneVisibility.Hidden;
+            this.pdf.Size = new System.Drawing.Size(250, 300);
+            this.pdf.TabIndex = 36;
             // 
             // dgvList
             // 
@@ -183,9 +223,11 @@
             this.AttachFileSeq,
             this.AttachFileNo,
             this.FileName,
+            this.Remark,
             this.FilePathName,
             this.FileExt,
-            this.FileBase64});
+            this.FileBase64,
+            this.WorkingTag});
             this.dgvList.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
@@ -217,24 +259,6 @@
             this.dgvList.Size = new System.Drawing.Size(1076, 218);
             this.dgvList.TabIndex = 33;
             this.dgvList.Tag = "4";
-            // 
-            // panBase
-            // 
-            this.panBase.Controls.Add(this.pic);
-            this.panBase.Controls.Add(this.pdf);
-            this.panBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panBase.Location = new System.Drawing.Point(3, 221);
-            this.panBase.Name = "panBase";
-            this.panBase.Size = new System.Drawing.Size(1076, 573);
-            this.panBase.TabIndex = 36;
-            // 
-            // pdf
-            // 
-            this.pdf.Location = new System.Drawing.Point(42, 38);
-            this.pdf.Name = "pdf";
-            this.pdf.NavigationPaneInitialVisibility = DevExpress.XtraPdfViewer.PdfNavigationPaneVisibility.Hidden;
-            this.pdf.Size = new System.Drawing.Size(250, 300);
-            this.pdf.TabIndex = 36;
             // 
             // dataGridViewImageColumn1
             // 
@@ -293,6 +317,20 @@
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             this.dataGridViewTextBoxColumn6.Visible = false;
             // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "WorkingTag";
+            this.dataGridViewTextBoxColumn7.HeaderText = "WorkingTag";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Visible = false;
+            // 
+            // pic
+            // 
+            this.pic.Location = new System.Drawing.Point(331, 38);
+            this.pic.Name = "pic";
+            this.pic.Size = new System.Drawing.Size(275, 300);
+            this.pic.TabIndex = 37;
+            // 
             // fileImage
             // 
             this.fileImage.DataPropertyName = "fileImage";
@@ -323,9 +361,19 @@
             // 
             this.FileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.FileName.DataPropertyName = "FileName";
+            this.FileName.FillWeight = 54F;
             this.FileName.HeaderText = "파일명";
+            this.FileName.MinimumWidth = 100;
             this.FileName.Name = "FileName";
-            this.FileName.ReadOnly = true;
+            // 
+            // Remark
+            // 
+            this.Remark.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Remark.DataPropertyName = "Remark";
+            this.Remark.FillWeight = 54.0146F;
+            this.Remark.HeaderText = "비고";
+            this.Remark.MinimumWidth = 100;
+            this.Remark.Name = "Remark";
             // 
             // FilePathName
             // 
@@ -350,12 +398,12 @@
             this.FileBase64.ReadOnly = true;
             this.FileBase64.Visible = false;
             // 
-            // pic
+            // WorkingTag
             // 
-            this.pic.Location = new System.Drawing.Point(331, 38);
-            this.pic.Name = "pic";
-            this.pic.Size = new System.Drawing.Size(275, 300);
-            this.pic.TabIndex = 37;
+            this.WorkingTag.DataPropertyName = "WorkingTag";
+            this.WorkingTag.HeaderText = "WorkingTag";
+            this.WorkingTag.Name = "WorkingTag";
+            this.WorkingTag.Visible = false;
             // 
             // frmAttachFileView
             // 
@@ -371,8 +419,8 @@
             this.panel1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabList.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.panBase.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -380,7 +428,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabList;
         private DevComponents.DotNetBar.Controls.DataGridViewX dgvList;
@@ -388,13 +435,6 @@
         private System.Windows.Forms.Button btnQuery;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewImageColumn fileImage;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AttachFileSeq;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AttachFileNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FilePathName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FileExt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FileBase64;
         private System.Windows.Forms.Button btnDownload;
         private System.Windows.Forms.Panel panBase;
         private DevExpress.XtraPdfViewer.PdfViewer pdf;
@@ -406,5 +446,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.DataGridViewImageColumn fileImage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AttachFileSeq;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AttachFileNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Remark;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FilePathName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileExt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileBase64;
+        private System.Windows.Forms.DataGridViewTextBoxColumn WorkingTag;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
     }
 }

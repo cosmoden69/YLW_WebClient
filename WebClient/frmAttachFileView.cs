@@ -31,12 +31,16 @@ namespace YLW_WebClient.CAA
         {
             InitializeComponent();
 
+            this.btnSave.Click += BtnSave_Click;
             this.btnQuery.Click += BtnQuery_Click;
             this.btnExit.Click += BtnExit_Click;
             this.btnPrint.Click += BtnPrint_Click;
             this.btnDownload.Click += BtnDownload_Click;
             this.dgvList.CellClick += DgvList_CellClick;
             this.dgvList.CellDoubleClick += DgList_CellDoubleClick;
+            this.dgvList.RowPostPaint += DgvList_RowPostPaint;
+            this.dgvList.DataError += DgvList_DataError;
+            this.dgvList.CellValueChanged += DgvList_CellValueChanged;
 
             _bEvent = true;
         }
@@ -212,20 +216,14 @@ namespace YLW_WebClient.CAA
                 {
                     //목록
                     dgvList.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                    if (!ydt.Columns.Contains("WorkingTag")) ydt.Columns.Add("WorkingTag");
                     for (int i = 0; i < ydt.Rows.Count; i++)
                     {
                         DataRow dr = ydt.Rows[i];
+                        dr["WorkingTag"] = "";
                         int idx = dgvList.Rows.Add();
                         DataGridViewRow drow = dgvList.Rows[idx];
-                        string strImage = dr["FileBase64"].ToString();
-                        Image img = YLWService.Utils.stringToImage(strImage);
-                        drow.Cells["fileImage"].Value = img?.GetThumbnailImage(120, 80, null, IntPtr.Zero);   // 사진
-                        drow.Cells["AttachFileSeq"].Value = dr["AttachFileSeq"];
-                        drow.Cells["AttachFileNo"].Value = dr["AttachFileNo"];
-                        drow.Cells["FileName"].Value = dr["FileName"];
-                        drow.Cells["FilePathName"].Value = dr["RealFileName"];
-                        drow.Cells["FileExt"].Value = dr["FileExt"];
-                        drow.Cells["FileBase64"].Value = dr["FileBase64"];
+                        SetGridRow(drow, dr);
                     }
                     dgvList.Refresh();
                     DgvList_CellClick(dgvList, new DataGridViewCellEventArgs(0, 0));
@@ -239,6 +237,222 @@ namespace YLW_WebClient.CAA
             finally
             {
                 Cursor.Current = Cursors.Default;
+            }
+        }
+
+        private bool SetGridRow(DataGridViewRow drow, DataRow dr)
+        {
+            try
+            {
+                _bEvent = false;
+
+                string strImage = dr["FileBase64"].ToString();
+                Image img = YLWService.Utils.stringToImage(strImage);
+                drow.Cells["fileImage"].Value = img?.GetThumbnailImage(120, 80, null, IntPtr.Zero);   // 사진
+                drow.Cells["AttachFileSeq"].Value = dr["AttachFileSeq"];
+                drow.Cells["AttachFileNo"].Value = dr["AttachFileNo"];
+                drow.Cells["FileName"].Value = dr["FileName"];
+                drow.Cells["FilePathName"].Value = dr["RealFileName"];
+                drow.Cells["FileExt"].Value = dr["FileExt"];
+                drow.Cells["Remark"].Value = dr["Remark"];
+                drow.Cells["FileBase64"].Value = dr["FileBase64"];
+                drow.Cells["WorkingTag"].Value = (dr.Table.Columns.Contains("WorkingTag") ? dr["WorkingTag"] + "" : "");
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                _bEvent = true;
+            }
+        }
+
+        private bool SetGridRowUpdate(DataGridViewRow drow, DataRow dr)
+        {
+            try
+            {
+                _bEvent = false;
+
+                drow.Cells["FileName"].Value = dr["FileName"];
+                drow.Cells["Remark"].Value = dr["Remark"];
+                drow.Cells["WorkingTag"].Value = (dr.Table.Columns.Contains("WorkingTag") ? dr["WorkingTag"] + "" : "");
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                _bEvent = true;
+            }
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            if (chkChanged() != true)
+            {
+                MessageBox.Show("수정된 내역이 없습니다");
+                return;
+            }
+            if (chkValid() != true)
+            {
+                return;
+            }
+
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                DataSet yds = null;
+                if (SaveData(GetSaveData("AU"), out yds) == true)
+                {
+                    DataTable dt4 = yds.Tables["DataBlock4"];
+                    for (int ii = 0; ii < dt4.Rows.Count; ii++)
+                    {
+                        dt4.Rows[ii]["WorkingTag"] = "";
+                        int idx = Utils.ToInt(dt4.Rows[ii]["IDX_NO"]);
+                        SetGridRowUpdate(dgvList.Rows[idx - 1], dt4.Rows[ii]);
+                    }
+                    dgvList.Refresh();
+                    MessageBox.Show("저장 완료");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
+        private bool chkChanged()
+        {
+            try
+            {
+                for (int ii = 0; ii < dgvList.Rows.Count; ii++)
+                {
+                    DataGridViewRow dr = dgvList.Rows[ii];
+                    string workingTag = dr.Cells["WorkingTag"].Value + "";
+                    if (workingTag != "") return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+        }
+
+        private bool chkValid()
+        {
+            try
+            {
+                for (int ii = 0; ii < dgvList.Rows.Count; ii++)
+                {
+                    DataGridViewRow dr = dgvList.Rows[ii];
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+
+            }
+        }
+
+        private bool SaveData(DataSet pds, out DataSet yds)
+        {
+            YLWService.YlwSecurityJson security = YLWService.MTRServiceModule.SecurityJson.Clone();  //깊은복사
+
+            yds = YLWService.MTRServiceModule.CallMTRFileUpdate(security, pds);
+            if (yds == null)
+            {
+                MessageBox.Show("저장할 수 없습니다");
+                return false;
+            }
+            foreach (DataTable dti in yds.Tables)
+            {
+                if (!dti.Columns.Contains("Status")) continue;
+                if (!dti.Columns.Contains("Result")) continue;
+                if (dti.Rows != null && dti.Columns.Contains("Status"))
+                {
+                    for (int ii = 0; ii < dti.Rows.Count; ii++)
+                    {
+                        if (Convert.ToInt32(dti.Rows[ii]["Status"]) != 0)   //Status != 0 이면 저장안됨
+                        {
+                            MessageBox.Show("저장안됨:" + dti.Rows[ii]["Result"]);
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+
+        private DataSet GetSaveData(string fg)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+
+                DataTable dt1 = ds.Tables.Add("DataBlock1");
+                dt1.Columns.Add("CompanySeq");
+                dt1.Columns.Add("LanguageSeq");
+                dt1.Columns.Add("LoginPgmSeq");
+                dt1.Columns.Add("UserSeq");
+                dt1.Columns.Add("AttachFileConstSeq");
+                dt1.Columns.Add("AttachFileSeq");
+                dt1.Columns.Add("AttachFileNo");
+                dt1.Columns.Add("IsRepFile");
+                dt1.Columns.Add("FileName");
+                dt1.Columns.Add("Remark");
+                dt1.Columns.Add("WorkingTag");
+                dt1.Columns.Add("IDX_NO");
+                dt1.Columns.Add("DataSeq");
+                dt1.Clear();
+                int seq = 1;
+                for (int i = 0; i < dgvList.RowCount; i++)
+                {
+                    string workingTag = dgvList.Rows[i].Cells["WorkingTag"].Value + "";
+                    if (fg == "AU")
+                    {
+                        if (workingTag != "A" && workingTag != "U") continue;
+                    }
+                    if (fg == "D")
+                    {
+                        if (workingTag != "D") continue;
+                    }
+                    DataRow dr = dt1.Rows.Add();
+                    dr["CompanySeq"] = _param.CompanySeq.ToString();
+                    dr["LanguageSeq"] = "1";
+                    dr["LoginPgmSeq"] = "";
+                    dr["UserSeq"] = "0";
+                    dr["AttachFileConstSeq"] = "";
+                    dr["AttachFileSeq"] = dgvList.Rows[i].Cells["AttachFileSeq"].Value;
+                    dr["AttachFileNo"] = dgvList.Rows[i].Cells["AttachFileNo"].Value;
+                    dr["IsRepFile"] = "";
+                    dr["FileName"] = dgvList.Rows[i].Cells["FileName"].Value;
+                    dr["Remark"] = dgvList.Rows[i].Cells["Remark"].Value;
+                    dr["WorkingTag"] = dgvList.Rows[i].Cells["WorkingTag"].Value;
+                    dr["IDX_NO"] = i + 1;
+                    dr["Dataseq"] = seq;
+                    seq++;
+                }
+
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
             }
         }
 
@@ -303,6 +517,52 @@ namespace YLW_WebClient.CAA
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void DgvList_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (!_bEvent) return;
+
+            try
+            {
+                DataGridViewRow dr = dgvList.Rows[e.RowIndex];
+                string workingTag = dr.Cells["WorkingTag"].Value + "";
+                if (workingTag == "")
+                {
+                    dr.HeaderCell.Value = "U";
+                    dr.Cells["WorkingTag"].Value = "U";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void DgvList_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+        }
+
+        private void DgvList_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow dr = dgvList.Rows[e.RowIndex];
+                string workingTag = dr.Cells["WorkingTag"].Value + "";
+
+                //' Position text
+                SizeF size = e.Graphics.MeasureString(workingTag, dgvList.Font);
+                if (dgvList.RowHeadersWidth < Convert.ToInt32(size.Width + 20))
+                {
+                    dgvList.RowHeadersWidth = Convert.ToInt32(size.Width + 20);
+                }
+
+                //' Use default system text brush
+                Brush b = SystemBrushes.ControlText;
+                e.Graphics.DrawString(workingTag, dgvList.Font, b, e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + ((e.RowBounds.Height - size.Height) / 2));
+            }
+            catch { }
+        }
+
 
         private void ImageView(DataGridViewRow drow)
         {
