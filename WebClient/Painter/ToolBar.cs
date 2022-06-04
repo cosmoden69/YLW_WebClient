@@ -78,6 +78,7 @@ namespace YLW_WebClient.Painter
             this.btnClear.Click += BtnClear_Click;
             this.btnFileOpen.Click += new System.EventHandler(this.btnFileOpen_Click);
             this.btnFileSave.Click += new System.EventHandler(this.btnFileSave_Click);
+            this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
             this.btnUndo.Click += BtnUndo_Click;
             this.btnRedo.Click += BtnRedo_Click;
             this.chkSelect.CheckedChanged += chkSelect_CheckedChanged;
@@ -300,6 +301,12 @@ namespace YLW_WebClient.Painter
         {
             if (!bEvent) return;
             MainController.Instance.Sheet?.OnNext(ObserverAction.FileSave);
+        }
+
+        private void btnSaveAs_Click(object sender, EventArgs e)
+        {
+            if (!bEvent) return;
+            MainController.Instance.Sheet?.OnNext(ObserverAction.SaveAs);
         }
     }
 }

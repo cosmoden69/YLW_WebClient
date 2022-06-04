@@ -302,6 +302,7 @@ namespace YLW_WebClient.Painter
                     case ObserverAction.New: this.NewPage(this.BaseImage); return;
                     case ObserverAction.FileLoad: this.FileLoad(); return;
                     case ObserverAction.FileSave: this.FileSave(); return;
+                    case ObserverAction.SaveAs: this.SaveAs(); return;
                     case ObserverAction.Invalidate: this.Invalidate(); return;
                     case ObserverAction.Undo: this.Undo(); return;
                     case ObserverAction.Redo: this.Redo(); return;
@@ -402,6 +403,34 @@ namespace YLW_WebClient.Painter
             //        MessageBox.Show(ex.Message);
             //    }
             //}
+        }
+
+        public void SaveAs()
+        {
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            dlg.Filter = "이미지 파일(.png)|*.png|모든 파일(*.*)|*.*";
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                try
+                {
+                    string ext = Path.GetExtension(dlg.FileName);
+                    System.Drawing.Imaging.ImageFormat fmt = System.Drawing.Imaging.ImageFormat.Png;
+                    if (ext.ToLower() == ".bmp") fmt = System.Drawing.Imaging.ImageFormat.Bmp;
+                    if (ext.ToLower() == ".jpg" || ext.ToLower() == ".jpeg") fmt = System.Drawing.Imaging.ImageFormat.Jpeg;
+                    if (ext.ToLower() == ".tif" || ext.ToLower() == ".tiff") fmt = System.Drawing.Imaging.ImageFormat.Tiff;
+                    this.ObjectList.UnselectAll();
+                    Bitmap img = GetResultImage();
+                    using (FileStream fs = new FileStream(dlg.FileName, FileMode.OpenOrCreate))
+                    {
+                        img.Save(fs, fmt);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
 
         public Bitmap GetResultImage()

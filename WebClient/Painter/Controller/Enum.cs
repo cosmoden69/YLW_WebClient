@@ -15,6 +15,7 @@ namespace YLW_WebClient.Painter
         New,                 //새로 만들기
         FileLoad,             //불러오기
         FileSave,             //저장하기
+        SaveAs,               //다른이름으로 저장
         Invalidate,           //다시 그리기
         Undo,                //취소
         Redo,                //다시

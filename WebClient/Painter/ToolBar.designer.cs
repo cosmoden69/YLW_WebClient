@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToolBar));
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
@@ -55,6 +54,7 @@
             DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip13 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipItem toolTipItem13 = new DevExpress.Utils.ToolTipItem();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ToolBar));
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.btnFileOpen = new DevExpress.XtraEditors.SimpleButton();
@@ -115,6 +115,7 @@
             this.chkBorderLine = new DevExpress.XtraEditors.CheckButton();
             this.chkBorderNone = new DevExpress.XtraEditors.CheckButton();
             this.btnFileSave = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSaveAs = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
@@ -133,6 +134,7 @@
             // 
             // groupControl4
             // 
+            this.groupControl4.Controls.Add(this.btnSaveAs);
             this.groupControl4.Controls.Add(this.btnFileOpen);
             this.groupControl4.Controls.Add(this.btnClear);
             this.groupControl4.Controls.Add(this.btnRedo);
@@ -140,7 +142,7 @@
             this.groupControl4.Location = new System.Drawing.Point(3, 3);
             this.groupControl4.Name = "groupControl4";
             this.groupControl4.ShowCaption = false;
-            this.groupControl4.Size = new System.Drawing.Size(90, 99);
+            this.groupControl4.Size = new System.Drawing.Size(129, 99);
             this.groupControl4.TabIndex = 29;
             this.groupControl4.Text = "groupControl4";
             // 
@@ -203,7 +205,7 @@
             this.groupControl1.Controls.Add(this.chkText);
             this.groupControl1.Controls.Add(this.chkFill);
             this.groupControl1.Controls.Add(this.chkPencil);
-            this.groupControl1.Location = new System.Drawing.Point(99, 3);
+            this.groupControl1.Location = new System.Drawing.Point(137, 3);
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.ShowCaption = false;
             this.groupControl1.Size = new System.Drawing.Size(255, 99);
@@ -454,7 +456,7 @@
             this.gcBorderStyle.Controls.Add(this.panel2);
             this.gcBorderStyle.Controls.Add(this.edtBorderColor);
             this.gcBorderStyle.Controls.Add(this.panel1);
-            this.gcBorderStyle.Location = new System.Drawing.Point(360, 3);
+            this.gcBorderStyle.Location = new System.Drawing.Point(398, 3);
             this.gcBorderStyle.Name = "gcBorderStyle";
             this.gcBorderStyle.ShowCaption = false;
             this.gcBorderStyle.Size = new System.Drawing.Size(483, 99);
@@ -884,12 +886,23 @@
             this.btnFileSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
             this.btnFileSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnFileSave.ImageOptions.Image")));
             this.btnFileSave.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.btnFileSave.Location = new System.Drawing.Point(849, 8);
+            this.btnFileSave.Location = new System.Drawing.Point(887, 8);
             this.btnFileSave.Name = "btnFileSave";
             this.btnFileSave.Size = new System.Drawing.Size(72, 86);
             this.btnFileSave.TabIndex = 33;
             this.btnFileSave.TabStop = false;
             this.btnFileSave.Text = "반영";
+            // 
+            // btnSaveAs
+            // 
+            this.btnSaveAs.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnSaveAs.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.btnSaveAs.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.btnSaveAs.Location = new System.Drawing.Point(87, 6);
+            this.btnSaveAs.Name = "btnSaveAs";
+            this.btnSaveAs.Size = new System.Drawing.Size(37, 41);
+            this.btnSaveAs.TabIndex = 4;
+            this.btnSaveAs.TabStop = false;
             // 
             // ToolBar
             // 
@@ -983,5 +996,6 @@
         private System.Windows.Forms.Label chkBorderW13;
         private System.Windows.Forms.Label chkBorderW7;
         private System.Windows.Forms.Label chkBorderW2;
+        private DevExpress.XtraEditors.SimpleButton btnSaveAs;
     }
 }
