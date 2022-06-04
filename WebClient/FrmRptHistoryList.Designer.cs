@@ -30,16 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmRptHistoryList));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnDownload = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnDownload);
             this.panel1.Controls.Add(this.btnRefresh);
             this.panel1.Controls.Add(this.btnView);
             this.panel1.Controls.Add(this.btnCancel);
@@ -48,6 +50,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(424, 52);
             this.panel1.TabIndex = 0;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.Location = new System.Drawing.Point(12, 10);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(72, 31);
+            this.btnRefresh.TabIndex = 6;
+            this.btnRefresh.TabStop = false;
+            this.btnRefresh.Text = "다시 조회";
+            this.btnRefresh.UseVisualStyleBackColor = true;
             // 
             // btnView
             // 
@@ -85,16 +98,19 @@
             this.dgv.Size = new System.Drawing.Size(424, 660);
             this.dgv.TabIndex = 2;
             // 
-            // btnRefresh
+            // btnDownload
             // 
-            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.Location = new System.Drawing.Point(12, 10);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(72, 31);
-            this.btnRefresh.TabIndex = 6;
-            this.btnRefresh.TabStop = false;
-            this.btnRefresh.Text = "다시 조회";
-            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDownload.Image = ((System.Drawing.Image)(resources.GetObject("btnDownload.Image")));
+            this.btnDownload.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDownload.Location = new System.Drawing.Point(169, 10);
+            this.btnDownload.Name = "btnDownload";
+            this.btnDownload.Size = new System.Drawing.Size(81, 31);
+            this.btnDownload.TabIndex = 7;
+            this.btnDownload.TabStop = false;
+            this.btnDownload.Text = "다운로드";
+            this.btnDownload.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDownload.UseVisualStyleBackColor = true;
             // 
             // FrmRptHistoryList
             // 
@@ -119,5 +135,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnView;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnDownload;
     }
 }

@@ -31,6 +31,7 @@ namespace YLW_WebClient
             InitializeComponent();
 
             this.btnRefresh.Click += BtnRefresh_Click;
+            this.btnDownload.Click += BtnDownload_Click;
             this.btnView.Click += BtnView_Click;
             this.btnCancel.Click += BtnCancel_Click;
             this.dgv.CellDoubleClick += Dgv_CellDoubleClick;
@@ -142,6 +143,60 @@ namespace YLW_WebClient
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void BtnDownload_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                int rindex = (dgv.CurrentRow != null ? dgv.CurrentRow.Index : -1);
+                if (rindex < 0 || rindex >= dgv.Rows.Count) return;
+
+                ReportParam p = new ReportParam();
+                p.CompanySeq = param.CompanySeq;
+                p.AcptMgmtSeq = Utils.ConvertToString(this.dgv.Rows[rindex].Cells["AcptMgmtSeq"].Value);
+                p.ReSurvAsgnNo = Utils.ConvertToString(this.dgv.Rows[rindex].Cells["ReSurvAsgnNo"].Value);
+                p.ReportType = Utils.ConvertToString(this.dgv.Rows[rindex].Cells["ReportType"].Value);
+                p.Seq = Utils.ToInt(this.dgv.Rows[rindex].Cells["Seq"].Value);
+
+                string streamdata = Utils.ClassToJsonstring(p);
+                ReportData response = YLWService.MTRServiceModule.CallMTRGetSaveRptHistoryPost(streamdata);
+                YLWService.Response rsp = response.Response;
+                if (rsp.Result != 1)
+                {
+                    throw new Exception(rsp.Message);
+                }
+                string filename = Utils.ConvertToString(this.dgv.Rows[rindex].Cells["FileName"].Value);
+                string fileseq = Utils.ConvertToString(this.dgv.Rows[rindex].Cells["FileSeq"].Value);
+                string rptname = response.ReportName;
+                string rpttext = response.ReportText;
+                byte[] rptbyte = Convert.FromBase64String(rpttext);
+
+                string userRoot = System.Environment.GetEnvironmentVariable("USERPROFILE");
+                string downloadFolder = Path.Combine(userRoot, "Downloads");
+
+                MemoryStream stream = new MemoryStream(rptbyte);
+                string file = Path.Combine(downloadFolder, filename);
+                if (File.Exists(file)) File.Delete(file);
+                using (FileStream fs = new FileStream(file, FileMode.CreateNew))
+                {
+                    stream.CopyTo(fs);
+                }
+                stream.Dispose();
+
+                //System.Diagnostics.Process.Start("explorer.exe", downloadFolder);
+                System.Diagnostics.Process.Start(file);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
             }
         }
 
