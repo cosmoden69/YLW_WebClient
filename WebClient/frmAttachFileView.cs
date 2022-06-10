@@ -200,7 +200,11 @@ namespace YLW_WebClient.CAA
                 {
                     pds = YLWService.MTRServiceModule.CallMTRFileDownload(security, fileSeq, "", "");
                 }
-                catch (Exception ex) { return; }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
                 if (pds == null || pds.Tables.Count < 1)
                 {
                     MessageBox.Show("데이타가 없습니다");
@@ -466,6 +470,7 @@ namespace YLW_WebClient.CAA
                 if (e.ColumnIndex < 0 || e.ColumnIndex >= dgv.ColumnCount) return;
 
                 string file = GetFile(dgv.Rows[e.RowIndex]);
+                if (file == "") return;  //파일없음
                 if (Path.GetExtension(file).ToUpper() == ".PDF")
                 {
                     pic.Visible = false;
