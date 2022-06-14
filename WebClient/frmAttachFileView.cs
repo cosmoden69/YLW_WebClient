@@ -202,7 +202,6 @@ namespace YLW_WebClient.CAA
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
                     return;
                 }
                 if (pds == null || pds.Tables.Count < 1)
