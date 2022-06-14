@@ -31,6 +31,7 @@ namespace YLW_WebClient
 
         public void SetImage(List<Image> img)
         {
+            pic.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Clip;
             pic.Properties.ZoomPercent = 100;
             _images = img;
             SetPicture(0);
@@ -57,11 +58,13 @@ namespace YLW_WebClient
 
         private void BtnZoomOut_Click(object sender, EventArgs e)
         {
+            pic.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Clip;
             pic.Properties.ZoomPercent -= 6;
         }
 
         private void BtnZoomIn_Click(object sender, EventArgs e)
         {
+            pic.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Clip;
             pic.Properties.ZoomPercent += 6;
         }
 

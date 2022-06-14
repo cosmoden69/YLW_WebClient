@@ -35,6 +35,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnFileD = new System.Windows.Forms.Button();
+            this.btnFileA = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnDownload = new System.Windows.Forms.Button();
@@ -47,6 +49,7 @@
             this.panBase = new System.Windows.Forms.Panel();
             this.pdf = new DevExpress.XtraPdfViewer.PdfViewer();
             this.dgvList = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.Column1 = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,25 +58,37 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pic = new YLW_WebClient.ucImageViewer();
             this.fileImage = new System.Windows.Forms.DataGridViewImageColumn();
+            this.AttachFileConstSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AttachFileSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AttachFileNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Remark = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FilePathName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileExt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileBase64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WorkingTag = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabList.SuspendLayout();
             this.panBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnFileD);
+            this.panel1.Controls.Add(this.btnFileA);
             this.panel1.Controls.Add(this.btnExit);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.btnDownload);
@@ -86,6 +101,28 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1090, 51);
             this.panel1.TabIndex = 0;
+            // 
+            // btnFileD
+            // 
+            this.btnFileD.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFileD.Location = new System.Drawing.Point(186, 12);
+            this.btnFileD.Name = "btnFileD";
+            this.btnFileD.Size = new System.Drawing.Size(90, 27);
+            this.btnFileD.TabIndex = 28;
+            this.btnFileD.TabStop = false;
+            this.btnFileD.Text = "선택행 삭제";
+            this.btnFileD.UseVisualStyleBackColor = true;
+            // 
+            // btnFileA
+            // 
+            this.btnFileA.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFileA.Location = new System.Drawing.Point(115, 12);
+            this.btnFileA.Name = "btnFileA";
+            this.btnFileA.Size = new System.Drawing.Size(67, 27);
+            this.btnFileA.TabIndex = 27;
+            this.btnFileA.TabStop = false;
+            this.btnFileA.Text = "사진 추가";
+            this.btnFileA.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
@@ -126,7 +163,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(112, 19);
+            this.label1.Location = new System.Drawing.Point(348, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 12);
             this.label1.TabIndex = 4;
@@ -145,7 +182,7 @@
             // 
             // txtFileSeq
             // 
-            this.txtFileSeq.Location = new System.Drawing.Point(195, 16);
+            this.txtFileSeq.Location = new System.Drawing.Point(431, 16);
             this.txtFileSeq.Name = "txtFileSeq";
             this.txtFileSeq.Size = new System.Drawing.Size(55, 21);
             this.txtFileSeq.TabIndex = 2;
@@ -172,8 +209,7 @@
             // 
             // tabList
             // 
-            this.tabList.Controls.Add(this.panBase);
-            this.tabList.Controls.Add(this.dgvList);
+            this.tabList.Controls.Add(this.splitContainer1);
             this.tabList.Location = new System.Drawing.Point(4, 22);
             this.tabList.Name = "tabList";
             this.tabList.Padding = new System.Windows.Forms.Padding(3);
@@ -187,9 +223,9 @@
             this.panBase.Controls.Add(this.pic);
             this.panBase.Controls.Add(this.pdf);
             this.panBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panBase.Location = new System.Drawing.Point(3, 221);
+            this.panBase.Location = new System.Drawing.Point(0, 0);
             this.panBase.Name = "panBase";
-            this.panBase.Size = new System.Drawing.Size(1076, 573);
+            this.panBase.Size = new System.Drawing.Size(1076, 551);
             this.panBase.TabIndex = 36;
             // 
             // pdf
@@ -220,13 +256,16 @@
             this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.fileImage,
+            this.AttachFileConstSeq,
             this.AttachFileSeq,
             this.AttachFileNo,
             this.FileName,
             this.Remark,
             this.FilePathName,
             this.FileExt,
+            this.FileSize,
             this.FileBase64,
+            this.Column1,
             this.WorkingTag});
             this.dgvList.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -238,11 +277,11 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvList.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvList.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dgvList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgvList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvList.HighlightSelectedColumnHeaders = false;
-            this.dgvList.Location = new System.Drawing.Point(3, 3);
+            this.dgvList.Location = new System.Drawing.Point(0, 0);
             this.dgvList.Name = "dgvList";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -256,9 +295,20 @@
             this.dgvList.RowTemplate.Height = 23;
             this.dgvList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvList.Size = new System.Drawing.Size(1076, 218);
+            this.dgvList.Size = new System.Drawing.Size(1076, 236);
             this.dgvList.TabIndex = 33;
             this.dgvList.Tag = "4";
+            // 
+            // Column1
+            // 
+            this.Column1.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
+            this.Column1.FillWeight = 33F;
+            this.Column1.HeaderText = "";
+            this.Column1.Name = "Column1";
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Column1.Text = "삭제";
+            this.Column1.UseColumnTextForButtonValue = true;
+            this.Column1.Width = 33;
             // 
             // dataGridViewImageColumn1
             // 
@@ -290,23 +340,33 @@
             // 
             this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn3.DataPropertyName = "FileName";
+            this.dataGridViewTextBoxColumn3.FillWeight = 54F;
             this.dataGridViewTextBoxColumn3.HeaderText = "파일명";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 100;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Visible = false;
             // 
             // dataGridViewTextBoxColumn4
             // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn4.DataPropertyName = "FilePathName";
+            this.dataGridViewTextBoxColumn4.FillWeight = 54.0146F;
             this.dataGridViewTextBoxColumn4.HeaderText = "파일경로";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 100;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
             this.dataGridViewTextBoxColumn4.Visible = false;
             // 
             // dataGridViewTextBoxColumn5
             // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn5.DataPropertyName = "FileExt";
+            this.dataGridViewTextBoxColumn5.FillWeight = 54.0146F;
             this.dataGridViewTextBoxColumn5.HeaderText = "확장자";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 100;
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
             this.dataGridViewTextBoxColumn5.Visible = false;
             // 
             // dataGridViewTextBoxColumn6
@@ -322,7 +382,30 @@
             this.dataGridViewTextBoxColumn7.DataPropertyName = "WorkingTag";
             this.dataGridViewTextBoxColumn7.HeaderText = "WorkingTag";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
             this.dataGridViewTextBoxColumn7.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "WorkingTag";
+            this.dataGridViewTextBoxColumn8.HeaderText = "WorkingTag";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "FileBase64";
+            this.dataGridViewTextBoxColumn9.HeaderText = "이미지문자열";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "WorkingTag";
+            this.dataGridViewTextBoxColumn10.HeaderText = "WorkingTag";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.Visible = false;
             // 
             // pic
             // 
@@ -340,6 +423,14 @@
             this.fileImage.Name = "fileImage";
             this.fileImage.ReadOnly = true;
             this.fileImage.Width = 60;
+            // 
+            // AttachFileConstSeq
+            // 
+            this.AttachFileConstSeq.DataPropertyName = "AttachFileConstSeq";
+            this.AttachFileConstSeq.HeaderText = "파일상수";
+            this.AttachFileConstSeq.Name = "AttachFileConstSeq";
+            this.AttachFileConstSeq.ReadOnly = true;
+            this.AttachFileConstSeq.Visible = false;
             // 
             // AttachFileSeq
             // 
@@ -390,6 +481,13 @@
             this.FileExt.Name = "FileExt";
             this.FileExt.Visible = false;
             // 
+            // FileSize
+            // 
+            this.FileSize.DataPropertyName = "FileSize";
+            this.FileSize.HeaderText = "크기";
+            this.FileSize.Name = "FileSize";
+            this.FileSize.Visible = false;
+            // 
             // FileBase64
             // 
             this.FileBase64.DataPropertyName = "FileBase64";
@@ -404,6 +502,25 @@
             this.WorkingTag.HeaderText = "WorkingTag";
             this.WorkingTag.Name = "WorkingTag";
             this.WorkingTag.Visible = false;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.dgvList);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.panBase);
+            this.splitContainer1.Size = new System.Drawing.Size(1076, 791);
+            this.splitContainer1.SplitterDistance = 236;
+            this.splitContainer1.TabIndex = 37;
             // 
             // frmAttachFileView
             // 
@@ -421,6 +538,10 @@
             this.tabList.ResumeLayout(false);
             this.panBase.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -448,15 +569,24 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.Button btnFileD;
+        private System.Windows.Forms.Button btnFileA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewImageColumn fileImage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AttachFileConstSeq;
         private System.Windows.Forms.DataGridViewTextBoxColumn AttachFileSeq;
         private System.Windows.Forms.DataGridViewTextBoxColumn AttachFileNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Remark;
         private System.Windows.Forms.DataGridViewTextBoxColumn FilePathName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileExt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileBase64;
+        private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn WorkingTag;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
     }
 }
