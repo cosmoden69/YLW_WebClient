@@ -100,7 +100,14 @@ namespace YLW_WebClient.CAA
 
         private void SetInit()
         {
+            txtAcptMgmtSeq.Text = _param.AcptMgmtSeq;
             txtFileSeq.Text = _param.FileSeq;
+            if (_param.ReadOnlyFg == "1")
+            {
+                btnFileA.Visible = false;
+                btnFileD.Visible = false;
+                DeleteRow.Visible = false;
+            }
         }
 
         private void BtnDownload_Click(object sender, EventArgs e)
@@ -358,7 +365,7 @@ namespace YLW_WebClient.CAA
                 string strImage = ToBase64String(F_Info);
                 Image img = YLWService.Utils.stringToImage(strImage);
                 dr.Cells["fileImage"].Value = img?.GetThumbnailImage(120, 80, null, IntPtr.Zero);   // 사진
-                dr.Cells["AttachFileConstSeq"].Value = _param.AttachFileConstSeq;
+                dr.Cells["AttachFileConstSeq"].Value = _param.FileConstSeq;
                 dr.Cells["AttachFileSeq"].Value = _param.FileSeq;
                 dr.Cells["AttachFileNo"].Value = "";
                 dr.Cells["FileName"].Value = F_Info.Name;
@@ -452,6 +459,17 @@ namespace YLW_WebClient.CAA
                 DataSet yds = null;
                 if (SaveData(GetSaveData("AU"), out yds) == true)
                 {
+                    DataTable dt3 = yds.Tables["DataBlock3"];
+                    if (Utils.ToInt(_param.FileSeq) == 0)
+                    {
+                        string fileSeq = dt3.Rows[0]["AttachFileSeq"].ToString();
+                        if (!SaveFileSeq(fileSeq))  //파일내부코드 업데이트
+                        {
+                            return;
+                        }
+                        _param.FileSeq = fileSeq;
+                        txtFileSeq.Text = _param.FileSeq;
+                    }
                     DataTable dt4 = yds.Tables["DataBlock4"];
                     for (int ii = 0; ii < dt4.Rows.Count; ii++)
                     {
@@ -511,6 +529,66 @@ namespace YLW_WebClient.CAA
             }
         }
 
+        private bool SaveFileSeq(string fileSeq)
+        {
+            try
+            {
+                YLWService.YlwSecurityJson security = YLWService.MTRServiceModule.SecurityJson.Clone();  //깊은복사
+                security.serviceId = "Metro.Package.AdjSL.BisCSAttachFileMan";
+                security.methodId = "Save";
+                security.companySeq = _param.CompanySeq;
+                security.certId = security.certId + "_1";  // securityType = 1 --> ylwhnpsoftgw_1
+                security.securityType = 1;
+                security.userId = _param.UserID;
+
+                DataSet ds = new DataSet();
+                DataTable dt = ds.Tables.Add("DataBlock1");
+                dt.Columns.Add("PgmName");
+                dt.Columns.Add("FileSeqName");
+                dt.Columns.Add("AcptMgmtSeq");
+                dt.Columns.Add("ReSurvAsgnNo");
+                dt.Columns.Add("KeyStr");
+                dt.Columns.Add("ReadOnlyFg");
+                dt.Columns.Add("FileConstSeq");
+                dt.Columns.Add("FileSeq");
+                dt.Columns.Add("UserID");
+                dt.Clear();
+
+                DataRow dr = dt.Rows.Add();
+                dr["PgmName"] = _param.PgmName;
+                dr["FileSeqName"] = _param.FileSeqName;
+                dr["AcptMgmtSeq"] = _param.AcptMgmtSeq;
+                dr["ReSurvAsgnNo"] = _param.ReSurvAsgnNo;
+                dr["KeyStr"] = _param.KeyStr;
+                dr["ReadOnlyFg"] = _param.ReadOnlyFg;
+                dr["FileConstSeq"] = _param.FileConstSeq;
+                dr["FileSeq"] = fileSeq;
+                dr["UserID"] = _param.UserID;
+
+                DataSet yds = YLWService.MTRServiceModule.CallMTRServiceCallPost(security, ds);
+                if (yds == null)
+                {
+                    MessageBox.Show("데이타가 없습니다");
+                    return false;
+                }
+                foreach (DataTable dti in yds.Tables)
+                {
+                    if (!dti.Columns.Contains("Status")) continue;
+                    if (!dti.Columns.Contains("Result")) continue;
+                    if (dti.Rows.Count > 0 && Convert.ToInt32(dti.Rows[0]["Status"]) != 0)   //Status != 0 이면 저장안됨
+                    {
+                        MessageBox.Show(dti.Rows[0]["Result"] + "");
+                        return false;
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         private bool SaveData(DataSet pds, out DataSet yds)
         {
             YLWService.YlwSecurityJson security = YLWService.MTRServiceModule.SecurityJson.Clone();  //깊은복사
@@ -558,7 +636,7 @@ namespace YLW_WebClient.CAA
                 dr1["LanguageSeq"] = "1";
                 dr1["LoginPgmSeq"] = "";
                 dr1["UserSeq"] = "0";
-                dr1["AttachFileConstSeq"] = _param.AttachFileConstSeq;
+                dr1["AttachFileConstSeq"] = _param.FileConstSeq;
                 dr1["AttachFileSeq"] = _param.FileSeq;
 
                 DataTable dt2 = ds.Tables.Add("DataBlock2");

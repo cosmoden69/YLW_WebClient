@@ -35,6 +35,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtAcptMgmtSeq = new System.Windows.Forms.TextBox();
             this.btnFileD = new System.Windows.Forms.Button();
             this.btnFileA = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
@@ -46,10 +48,11 @@
             this.btnQuery = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabList = new System.Windows.Forms.TabPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.dgvList = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.DeleteRow = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.panBase = new System.Windows.Forms.Panel();
             this.pdf = new DevExpress.XtraPdfViewer.PdfViewer();
-            this.dgvList = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.Column1 = new DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,7 +64,6 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pic = new YLW_WebClient.ucImageViewer();
             this.fileImage = new System.Windows.Forms.DataGridViewImageColumn();
             this.AttachFileConstSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AttachFileSeq = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,20 +75,22 @@
             this.FileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileBase64 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WorkingTag = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.pic = new YLW_WebClient.ucImageViewer();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabList.SuspendLayout();
-            this.panBase.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvList)).BeginInit();
+            this.panBase.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.txtAcptMgmtSeq);
             this.panel1.Controls.Add(this.btnFileD);
             this.panel1.Controls.Add(this.btnFileA);
             this.panel1.Controls.Add(this.btnExit);
@@ -101,6 +105,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1090, 51);
             this.panel1.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(377, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 12);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "접수내부코드";
+            this.label2.Visible = false;
+            // 
+            // txtAcptMgmtSeq
+            // 
+            this.txtAcptMgmtSeq.Location = new System.Drawing.Point(460, 16);
+            this.txtAcptMgmtSeq.Name = "txtAcptMgmtSeq";
+            this.txtAcptMgmtSeq.Size = new System.Drawing.Size(55, 21);
+            this.txtAcptMgmtSeq.TabIndex = 29;
+            this.txtAcptMgmtSeq.Visible = false;
             // 
             // btnFileD
             // 
@@ -163,7 +185,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(348, 19);
+            this.label1.Location = new System.Drawing.Point(526, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 12);
             this.label1.TabIndex = 4;
@@ -182,7 +204,7 @@
             // 
             // txtFileSeq
             // 
-            this.txtFileSeq.Location = new System.Drawing.Point(431, 16);
+            this.txtFileSeq.Location = new System.Drawing.Point(609, 16);
             this.txtFileSeq.Name = "txtFileSeq";
             this.txtFileSeq.Size = new System.Drawing.Size(55, 21);
             this.txtFileSeq.TabIndex = 2;
@@ -218,23 +240,24 @@
             this.tabList.Text = "목록";
             this.tabList.UseVisualStyleBackColor = true;
             // 
-            // panBase
+            // splitContainer1
             // 
-            this.panBase.Controls.Add(this.pic);
-            this.panBase.Controls.Add(this.pdf);
-            this.panBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panBase.Location = new System.Drawing.Point(0, 0);
-            this.panBase.Name = "panBase";
-            this.panBase.Size = new System.Drawing.Size(1076, 551);
-            this.panBase.TabIndex = 36;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // pdf
+            // splitContainer1.Panel1
             // 
-            this.pdf.Location = new System.Drawing.Point(42, 38);
-            this.pdf.Name = "pdf";
-            this.pdf.NavigationPaneInitialVisibility = DevExpress.XtraPdfViewer.PdfNavigationPaneVisibility.Hidden;
-            this.pdf.Size = new System.Drawing.Size(250, 300);
-            this.pdf.TabIndex = 36;
+            this.splitContainer1.Panel1.Controls.Add(this.dgvList);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.panBase);
+            this.splitContainer1.Size = new System.Drawing.Size(1076, 791);
+            this.splitContainer1.SplitterDistance = 236;
+            this.splitContainer1.TabIndex = 37;
             // 
             // dgvList
             // 
@@ -265,7 +288,7 @@
             this.FileExt,
             this.FileSize,
             this.FileBase64,
-            this.Column1,
+            this.DeleteRow,
             this.WorkingTag});
             this.dgvList.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -299,16 +322,34 @@
             this.dgvList.TabIndex = 33;
             this.dgvList.Tag = "4";
             // 
-            // Column1
+            // DeleteRow
             // 
-            this.Column1.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
-            this.Column1.FillWeight = 33F;
-            this.Column1.HeaderText = "";
-            this.Column1.Name = "Column1";
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Column1.Text = "삭제";
-            this.Column1.UseColumnTextForButtonValue = true;
-            this.Column1.Width = 33;
+            this.DeleteRow.ColorTable = DevComponents.DotNetBar.eButtonColor.MagentaWithBackground;
+            this.DeleteRow.FillWeight = 33F;
+            this.DeleteRow.HeaderText = "";
+            this.DeleteRow.Name = "DeleteRow";
+            this.DeleteRow.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.DeleteRow.Text = "삭제";
+            this.DeleteRow.UseColumnTextForButtonValue = true;
+            this.DeleteRow.Width = 33;
+            // 
+            // panBase
+            // 
+            this.panBase.Controls.Add(this.pic);
+            this.panBase.Controls.Add(this.pdf);
+            this.panBase.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panBase.Location = new System.Drawing.Point(0, 0);
+            this.panBase.Name = "panBase";
+            this.panBase.Size = new System.Drawing.Size(1076, 551);
+            this.panBase.TabIndex = 36;
+            // 
+            // pdf
+            // 
+            this.pdf.Location = new System.Drawing.Point(42, 38);
+            this.pdf.Name = "pdf";
+            this.pdf.NavigationPaneInitialVisibility = DevExpress.XtraPdfViewer.PdfNavigationPaneVisibility.Hidden;
+            this.pdf.Size = new System.Drawing.Size(250, 300);
+            this.pdf.TabIndex = 36;
             // 
             // dataGridViewImageColumn1
             // 
@@ -407,13 +448,6 @@
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.Visible = false;
             // 
-            // pic
-            // 
-            this.pic.Location = new System.Drawing.Point(331, 38);
-            this.pic.Name = "pic";
-            this.pic.Size = new System.Drawing.Size(275, 300);
-            this.pic.TabIndex = 37;
-            // 
             // fileImage
             // 
             this.fileImage.DataPropertyName = "fileImage";
@@ -503,24 +537,12 @@
             this.WorkingTag.Name = "WorkingTag";
             this.WorkingTag.Visible = false;
             // 
-            // splitContainer1
+            // pic
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.dgvList);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.panBase);
-            this.splitContainer1.Size = new System.Drawing.Size(1076, 791);
-            this.splitContainer1.SplitterDistance = 236;
-            this.splitContainer1.TabIndex = 37;
+            this.pic.Location = new System.Drawing.Point(331, 38);
+            this.pic.Name = "pic";
+            this.pic.Size = new System.Drawing.Size(275, 300);
+            this.pic.TabIndex = 37;
             // 
             // frmAttachFileView
             // 
@@ -536,12 +558,12 @@
             this.panel1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabList.ResumeLayout(false);
-            this.panBase.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvList)).EndInit();
+            this.panBase.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -573,6 +595,9 @@
         private System.Windows.Forms.Button btnFileD;
         private System.Windows.Forms.Button btnFileA;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewImageColumn fileImage;
         private System.Windows.Forms.DataGridViewTextBoxColumn AttachFileConstSeq;
         private System.Windows.Forms.DataGridViewTextBoxColumn AttachFileSeq;
@@ -583,10 +608,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FileExt;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileBase64;
-        private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn Column1;
+        private DevComponents.DotNetBar.Controls.DataGridViewButtonXColumn DeleteRow;
         private System.Windows.Forms.DataGridViewTextBoxColumn WorkingTag;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtAcptMgmtSeq;
     }
 }
