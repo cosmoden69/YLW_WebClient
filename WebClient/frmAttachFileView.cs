@@ -699,7 +699,11 @@ namespace YLW_WebClient.CAA
                 if (e.ColumnIndex < 0 || e.ColumnIndex >= dgv.ColumnCount) return;
 
                 string file = GetFile(dgv.Rows[e.RowIndex]);
-                if (file == "") return;  //파일없음
+                if (file == "")
+                {
+                    pic.SetImage(null);
+                    return;  //파일없음
+                }
                 if (Path.GetExtension(file).ToUpper() == ".PDF")
                 {
                     pic.Visible = false;
