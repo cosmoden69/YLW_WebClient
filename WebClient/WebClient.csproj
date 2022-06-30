@@ -225,6 +225,12 @@
     <Compile Include="frmLinaSmplAuth.Designer.cs">
       <DependentUpon>frmLinaSmplAuth.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmReportViewInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportViewInvoice.Designer.cs">
+      <DependentUpon>frmReportViewInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmWait.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1215,6 +1221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLinaSmplAuth.resx">
       <DependentUpon>frmLinaSmplAuth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportViewInvoice.resx">
+      <DependentUpon>frmReportViewInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmWait.resx">
       <DependentUpon>frmWait.cs</DependentUpon>
