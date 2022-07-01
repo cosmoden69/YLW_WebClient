@@ -96,7 +96,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "frmReportViewInvoice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "인보이스 조회";
+            this.Text = "인보이스 출력";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
