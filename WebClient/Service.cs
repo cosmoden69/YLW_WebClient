@@ -61,7 +61,7 @@ namespace YLW_WebClient
                     frmReportViewSSL.Current.LoadDocument(rptname, strKey, stream);
                     frm = frmReportViewSSL.Current;
                 }
-                else if (para.ReportName == "RptAdjSLRptViewInvoiceOut1" || para.ReportName == "RptAdjSLRptViewInvoiceOut2")
+                else if (para.ReportName == "RptAdjSLInvoiceViewBillIssueOut1" || para.ReportName == "RptAdjSLInvoiceViewBillIssueOut2")
                 {
                     frmReportViewInvoice.ShowPreview(para);
                     frmReportViewInvoice.Current.LoadDocument(rptname, strKey, stream);

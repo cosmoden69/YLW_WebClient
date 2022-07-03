@@ -99,11 +99,11 @@ namespace YLW_WebClient
                 }
                 switch (_param.ReportName)
                 {
-                    case "RptAdjSLRptViewInvoiceOut1":     //인보험 인보이스
+                    case "RptAdjSLInvoiceViewBillIssueOut1":     //인보험 인보이스
                         btnSave.Visible = true;
                         winWordControl1.LoadDocument(file, true);
                         break;
-                    case "RptAdjSLRptViewInvoiceOut2":     //물보험 인보이스
+                    case "RptAdjSLInvoiceViewBillIssueOut2":     //물보험 인보이스
                         btnSave.Visible = true;
                         winWordControl1.LoadDocument(file, true);
                         break;
