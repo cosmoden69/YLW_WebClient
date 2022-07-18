@@ -70,32 +70,36 @@ namespace YLW_WebClient
 
         private static void ThreadShowWait()
         {
-            if (current == null || current.IsDisposed)
+            try
             {
-                current = new frmWait();
-                current.Top = (Screen.PrimaryScreen.WorkingArea.Height - current.Height) / 2;
-                current.Left = (Screen.PrimaryScreen.WorkingArea.Width - current.Width) / 2;
-                current.Show();
-            }
-            else if (!current.Visible)
-            {
-                current.Visible = true;
-            }
+                if (current == null || current.IsDisposed)
+                {
+                    current = new frmWait();
+                    current.Top = (Screen.PrimaryScreen.WorkingArea.Height - current.Height) / 2;
+                    current.Left = (Screen.PrimaryScreen.WorkingArea.Width - current.Width) / 2;
+                    current.Show();
+                }
+                else if (!current.Visible)
+                {
+                    current.Visible = true;
+                }
 
-            SetWindowPos(current.Handle, HWND_TOPMOST, 0, 0, 0, 0, TOPMOST_FLAGS);
+                SetWindowPos(current.Handle, HWND_TOPMOST, 0, 0, 0, 0, TOPMOST_FLAGS);
 
-            //닫기 명령이 올 때 가지 0.01 초 단위로 루프
-            while (!isCloseCall)
-            {
-                Application.DoEvents();
-                Thread.Sleep(10);
-            }
+                //닫기 명령이 올 때 가지 0.01 초 단위로 루프
+                while (!isCloseCall)
+                {
+                    Application.DoEvents();
+                    Thread.Sleep(10);
+                }
 
-            //닫는다.
-            if (current != null)
-            {
-                current.CloseForce();
+                //닫는다.
+                if (current != null)
+                {
+                    current.CloseForce();
+                }
             }
+            catch { }
         }
         #endregion Static Function
 
